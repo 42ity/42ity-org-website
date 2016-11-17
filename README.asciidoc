@@ -1,0 +1,43 @@
+== Introduction
+
+These are the source pages of link:http://42ity.org[42ITy website], in
+link:http://asciidoc.org[Asciidoc] format.
+
+These are used for generating the static HTML content of
+link:http://42ity.org[42ITy website].
+
+A modified version of
+link:https://github.com/llaville/asciidoc-bootstrap-backend[Asciidoc Bootstrap]
+backend is used, and included in the present repository to fit some specific
+needs. That also implies that you do not need to install the asciidoc-bootstrap
+backend.
+
+
+== Requirements
+
+- At least for now, the build system (simple Makefile) needs a Linux or Unix
+(whichever one) system, and the 'make' command to be available.
+
+- Install link:http://asciidoc.org[Asciidoc]: either using your OS packages
+manager or from source. Refer to the
+link:http://asciidoc.org/INSTALL.html[Asciidoc] website for more information.
+
+- Get the content of the present repository
+$ git clone https://github.com/42ity/42ity-org-website.git
+
+
+== Generate the website
+
+From the root of the 42ity-org-website directory, simply call:
+
+$ make
+
+This will build all the HTML files needed for the website.
+
+If you are a maintainer of the 42ITy website, you will also want to publish your
+modifications. To do so, call:
+
+$ make install
+
+Then go to the '42ity.github.io' subdirectory, and add/commit the needed files.
+All files under this submodule/repository will go public on http://42ity.org.

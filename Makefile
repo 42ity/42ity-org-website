@@ -22,16 +22,23 @@ IMAGE_FILES =	\
 STYLESHEET_FILES =	\
 	css/42ity.css	\
 	css/asciidoc-bootstrap.min.css
-#FIXME: which other CSS?
 
 SCRIPT_FILES =	\
 	js/42ity.js	\
 	js/bootstrap.min.js	\
 	js/jquery.min.js
-#FIXME: which other JS?
+# TODO: do we actually need the following?
+#	js/html5shiv.min.js	\
+#	js/respond.min.js
+#	js/ie8-responsive-file-warning.js
+#	js/ie-emulation-modes-warning.js
+#	js/npm.js
 
 # Common files that triggers a rebuild of the pages
 COMMON_REQS = bootstrap.conf navinfo.html
+
+# Submodule where to install files
+OUTDIR = 42ity.github.io
 
 ADOC_PARAMS_COMMON =	\
 	--backend=html5	\
@@ -58,6 +65,19 @@ all: $(HTML_FILES) $(IMAGE_FILES) $(STYLESHEET_FILES) $(SCRIPT_FILES)
 # index.html has some specifics (a jumbotron at least)
 index.html: index.asciidoc $(COMMON_REQS) index-jumboinfo.html
 	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -a jumbotron -a jumboinfo -o $@ $<
+
+# Install files to the submodule that points to https://github.com/42ity/42ity.github.io.git
+install:
+	# submodule init/update/sync...
+	@echo "Initializing the submodules..."
+	git submodule init
+	@echo "Updating the submodules..."
+	git submodule update
+	@echo "Copying websites files..."
+	cp -f $(HTML_FILES) $(OUTDIR)/
+	$(foreach image,$(IMAGE_FILES),cp -f $(image) $(OUTDIR)/$(image);)
+	$(foreach css,$(STYLESHEET_FILES),cp -f $(css) $(OUTDIR)/$(css);)
+	$(foreach js,$(SCRIPT_FILES),cp -f $(js) $(OUTDIR)/$(js);)
 
 clean:
 	rm -f $(HTML_GEN_FILES)
