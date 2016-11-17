@@ -1,0 +1,18 @@
+= Supported Hardware
+
+== Supported Hardware
+
+=== Eaton Intelligent Power Controller
+
+Embedded within an Eaton Intelligent Power Controller, 
+link:http://www.eaton.eu/ipminfrastructure[Eaton’s IPM Infrastructure] software
+provides data center managers with an easy to use and simple to deploy
+infrastructure monitoring solution. From the rack view to the data center
+dashboard, IPM Infrastructure allows IT professionals to understand and monitor
+data center power, environmental and physical capacity metrics, all within the
+context of their IT infrastructure.
+
+With all the flexibility of the 42ITy™ Open Source data center monitoring
+software stack, 
+link:http://www.eaton.eu/ipminfrastructure[Eaton IPM Infrastructure] simplifies
+complexity – so you can focus on what really matters.
