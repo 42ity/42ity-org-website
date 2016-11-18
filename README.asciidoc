@@ -41,3 +41,10 @@ $ make install
 
 Then go to the '42ity.github.io' subdirectory, and add/commit the needed files.
 All files under this submodule/repository will go public on http://42ity.org.
+
+== Licenses
+
+The present work is derived from
+link:https://github.com/llaville/asciidoc-bootstrap-backend[Asciidoc Bootstrap]
+made by Dan Allen and Laurent Laville. It is released under the Apache Licence
+Version 2.0.
