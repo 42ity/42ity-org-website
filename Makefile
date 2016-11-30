@@ -17,7 +17,8 @@ HTML_FILES = $(HTML_GEN_FILES) \
 	navinfo.html
 
 IMAGE_FILES =	\
-	favicon.ico
+	favicon.ico	\
+	images/42ITy-SW-arch.png
 
 STYLESHEET_FILES =	\
 	css/42ity.css	\

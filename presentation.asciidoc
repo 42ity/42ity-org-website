@@ -1,0 +1,113 @@
+= 42ITy presentation
+
+== General overview
+
+The 42ITy™ project promotes the global development, distribution and
+adoption of the 42ITy™ platform as a next generation Data Center Service
+Optimization enablement platform.
+
+The goal is to serve developers, users and the entire data center ecosystem
+by providing a set of shared resources to grow the adoption of 42ITy™ as
+the only open source, next generation Data Center Service Optimization
+enablement platform.
+
+The initial 42ITy™ platform is a result of more than 3 years of R&D effort
+by Eaton Corporation provided to the community.  While Eaton continues to
+be a key contributor to 42ITy™, the community is already growing.  Please
+link:contact.html[contact us] to find out how you can contribute.
+
+
+== Technical overview
+
+The 42ITy™ software platform is a Service Oriented Architecture (SOA), made of a
+collection of software packages communicating through a MOM (Message-oriented
+middleware), built around the link:http://zeromq.org[ZeroMQ] technology stack.
+
+The software is divided in a set of independent components, called *agent*.
+
+image:images/42ITy-SW-arch.png[42ITy SW architecture]
+
+Because we expect an arbitrary number of agents to be connected together, 42ITy™
+uses a central message broker called Malamute.
+
+Malamute is built using the same ZeroMQ stack, so integrates with the code
+easily. The purpose of malamute is to abstract from maintaining peer-to-peer
+connections and to allow easy 1:N communication patterns without need to change
+the agent side.
+
+At the moment there are three main patterns supported by Malamute broker:
+
+* PUB / SUB, Publish and Subscribe:
+there are agents publishing messages with some topic, where others can subscribe
+to them. Broker then ensures all messages are delivered to the right destination.
+Communication is asynchronous - each PUB call is queued immediately and sending
+does not block the code.
+
+* REQ / REP, Request and Reply:
+this is a directed 1:1 communication, usable for requesting some information
+from known place (persistence layer). It is synchronous, so blocking calling
+code until there is a result (or timeout).
+
+* Service:
+service is a dedicated agent, which can run in more instances spawned by broker
+on demand. This is suitable for long running tasks. This is not used in 42ITy™
+currently.
+
+== Agent overview
+
+Agents communicate through buses maintained by ZeroMQ library. Buses can use
+several backend technologies, most notably unix and classic TCP/IP sockets. So
+agents can be placed on the same machine or on arbitrary number of other
+machines (currently out of scope). Because basic messaging using zeromq messages
+(zmsg) is error prone with a lot of code duplication, 42ITy™ project uses
+serialization library called zproto. It defines a model of message in
+declarative XML language and code is generated using a template language called
+gsl.
+
+Generated code does provide nice C API for manipulating with messages as well as
+a way how to encode/decode it to/from zmsg. Thus such generated representations
+can be easily sent through zeromq channels.
+
+=== Actor model
+
+Agents are built on top of link:https://en.wikipedia.org/wiki/Actor_model[actor model].
+That means each maintains own state internally and communicate with the rest of
+the system over sending messages. The communication is asynchronous and agents
+are single threaded with the main loop. For cases the single main loop is not
+enough due performance reasons, agent can distribute workload to others using
+SERVICE pattern. However this is not used in current version of BIOS.
+
+=== How to create a new agent
+
+FIXME: reference to external doc or include
+
+
+== 42ITy™ sub-projects
+
+This chapter presents the different sub-projects that forms the 42ITy™ platform.
+
+Each of these sub-projects are available as repositories on
+link:http://github.com/42ity[42ITy] GitHub page.
+
+=== lib42ityproto
+
+lib42ityproto is the shared implementation of 42ITy™ core protocols, using
+Malamute and used by the different agents (assets, metrics, alerts).
+
+
+
+=== Services dependencies
+
+The systemd system and service manager is responsible for controlling how 42ITy™
+services are started, stopped and otherwise managed. It uses an event-based and
+dependencies based approach to optimize how services are managed (started,
+stopped, reloaded).
+
+The figure bellow illustrates the dependencies relationships for services
+running on 42ITy™.
+
+image:images/42ITy-svc-deps.png[42ITy services dependencies]
+
+...
+
+
