@@ -1,0 +1,97 @@
+= 42ITy Contributor guide
+
+There are many ways you can help make 42ITY™ better!
+
+This guide will help answer common questions you may have during your first and
+further contribution.
+
+== Submitting Issues
+
+Please raise a new issue in the link:https://github.com/42ity[Github issue tracker]
+of the sub-project.
+
+Not every contribution comes in the form of code. Submitting, confirming, and
+triaging issues is an important task for any project.
+
+42ITy uses GitHub to track all project issues.
+
+If you are familiar with 42ITy and know the component, that is causing you a
+problem, you can file an issue in the corresponding GitHub project. All of our
+Open Source Software can be found in our GitHub organization at
+link:https://github.com/42ity[https://github.com/42ity].
+
+////////////////////////////////////////////////////////////////////////////////
+FIXME: improvement point
+All projects include GitHub issue templates to help gather information needed for a thorough review.
+////////////////////////////////////////////////////////////////////////////////
+
+We ask you not to submit security concerns via GitHub. Please contact the
+development team using link:mailto:EatonIPCOpensource@Eaton.com[Eaton IPC Opensource]
+
+////////////////////////////////////////////////////////////////////////////////
+FIXME: improvement point
+For details on submitting potential security issues please see https://www.42ity.org/security/.
+////////////////////////////////////////////////////////////////////////////////
+
+
+== Working on the documentation
+
+FIXME: do we want to have this?
+
+== Working on the code
+
+We do warmly welcome contribution to the source code of 42ITy.
+
+=== Contribution Process
+
+We have a 3 step process for contributions:
+
+* Commit changes to a git branch, making sure to sign-off those changes for the
+Developer Certificate of Origin.
+
+* Create a GitHub Pull Request for your change, following the instructions in
+the pull request template.
+
+* Perform a Code Review with the project maintainers on the pull request.
+
+=== About the GNU General Public License
+
+42ITy uses the GNU General Public License v2+.
+
+FIXME: to be completed
+
+=== Developer Certification of Origin (DCO)
+
+To make a good faith effort to ensure the criteria of the GPL License are met,
+42ITy requires the Developer Certificate of Origin (DCO) process to be followed.
+
+The DCO is an attestation attached to every contribution made by every
+developer. In the commit message of the contribution, the developer simply adds
+a Signed-off-by statement and thereby agrees to the DCO, which you can find
+below or at link:http://developercertificate.org/[Developer Certificate of Origin].
+
+include::dco.asciidoc[]
+
+42ITy does not merge any pull requests made against a 42ITy-managed repository
+until each commit has been signed for the DCO, with two exceptions:
+“Obvious Fixes” and pull requests made against the documentation repository
+
+////////////////////////////////////////////////////////////////////////////////
+(https://github.com/42ity/42ity-docs).
+////////////////////////////////////////////////////////////////////////////////
+
+== The “Obvious Fix” Rule
+
+FIXME: to be completed
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+== Becoming a committer
+
+The first step is contributing to the project through the work on code.
+
+If you want to take that a step forward and become part of the 42ITy team, 
+a fellow committer on the project then see the Committer Guide
+////////////////////////////////////////////////////////////////////////////////
