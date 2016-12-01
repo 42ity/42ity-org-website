@@ -1,14 +1,15 @@
 = 42ITy Contributor guide
 
+== 42ITy Contributor guide
+
 There are many ways you can help make 42ITY™ better!
 
 This guide will help answer common questions you may have during your first and
 further contribution.
 
-== Submitting Issues
+:toc:
 
-Please raise a new issue in the link:https://github.com/42ity[Github issue tracker]
-of the sub-project.
+== Submitting Issues
 
 Not every contribution comes in the form of code. Submitting, confirming, and
 triaging issues is an important task for any project.
@@ -22,7 +23,8 @@ link:https://github.com/42ity[https://github.com/42ity].
 
 ////////////////////////////////////////////////////////////////////////////////
 FIXME: improvement point
-All projects include GitHub issue templates to help gather information needed for a thorough review.
+All projects include GitHub issue templates to help gather information needed
+for a thorough review.
 ////////////////////////////////////////////////////////////////////////////////
 
 We ask you not to submit security concerns via GitHub. Please contact the
@@ -30,7 +32,16 @@ development team using link:mailto:EatonIPCOpensource@Eaton.com[Eaton IPC Openso
 
 ////////////////////////////////////////////////////////////////////////////////
 FIXME: improvement point
-For details on submitting potential security issues please see https://www.42ity.org/security/.
+For details on submitting potential security issues please see
+https://www.42ity.org/security/.
+
+In addition to GitHub issues, we also utilize a feedback site that helps our
+product team track and rank feature requests. If you have a feature request,
+this is an excellent place to start: https://feedback.42ity.org.
+
+The following repositories are the preferred locations for the creation of
+issues and bug reports:
+To be completed
 ////////////////////////////////////////////////////////////////////////////////
 
 
@@ -82,16 +93,99 @@ until each commit has been signed for the DCO, with two exceptions:
 
 == The “Obvious Fix” Rule
 
-FIXME: to be completed
+42ITy contribution policy is aimed at encouraging broad participation from our
+community, and minimizing risks to 42ITy and our community due to inappropriate
+contributions of the intellectual property of others.
+
+As a general standard, 42ITy requires every contribution to by signed for the
+Developer Certificate of Origin (DCO).
+
+HOWEVER, very small contributions such as fixing spelling errors, where the
+content is small enough to not be considered intellectual property, can be
+submitted by a contributor as a patch, without a DCO sign-off. If you submit an
+obvious fix without a DCO sign-off, then you are agreeing that your submission
+is not independently copyrightable. The purpose of this exception is to lower
+the barrier for new contributors to make contributions while retaining the
+integrity of the project and our community.
+
+=== How does the Obvious Fix Rule Work?
+
+Any committer may commit fixes without a DCO sign-off for obvious typos, grammar
+mistakes, and formatting problems wherever they may be — in the web pages, API
+documentation, source code, etc.
+
+Whenever you invoke the “obvious fix” rule, please say so in your commit
+message. For example:
+
+----------------------------------------------------------------------------
+commit af7daa6490a3b04ed1ae6921d5b701b9558feb2f
+Author: John Doe <johndoe@some.org>
+Date:   Thu Nov 17 13:45:21 2016 +0100
+
+  Fix typo in the README.
+
+  Obvious fix.
+
+----------------------------------------------------------------------------
+
+An obvious fix is a pull request that does not contain creative work. We rely
+on your judgment to determine what is “obvious”; if you’re not sure, just
+contact the development team using
+link:mailto:EatonIPCOpensource@Eaton.com[Eaton IPC Opensource]
+
+As a rule of thumb, changes are obvious fixes if they do not introduce any new
+functionality or creative thinking. As long as the change does not affect
+functionality, some likely examples include the following:
+
+* Spelling/grammar fixes,
+* Correcting typos,
+* Cleaning up comments in the code,
+* Changes to white space or formatting,
+* Bug fixes that change default return values or error codes stored in
+constants, literals, or simple variable types,
+* Adding logging messages or debugging output,
+* Changes to ‘metadata’ files like Makefile, .gitignore, example configuration
+files, build scripts, etc.,
+* Changes that reflect outside facts, like renaming a build directory or
+changing a constant,
+* Changes in build or installation scripts,
+* Re-ordering of objects or subroutines within a source file (such as
+alphabetizing routines),
+* Moving source files from one directory or package to another, with no changes
+in code,
+* Breaking a source file into multiple source files, or consolidating multiple
+source files into one source file, with no change in code behavior,
+* Changes to words or phrases isolated from their context,
+* Changes to typeface.
+
+Things that would still require signing a DCO sign-off would likely include
+things like the following:
+
+* Any of the above actions that result in a change in functionality,
+* A new feature,
+* A translation,
+* Extensive or creative comments.
+
+
+== Coding rules
+
+To be completed
 
 
 
+== Use git
 
-////////////////////////////////////////////////////////////////////////////////
-== Becoming a committer
+42ITy is maintained on GitHub. To contribute to 42ITy, such as submitting a pull
+request, requires using GitHub and git. The sections below describe how to use
+git to set up the 42ITy repository, keep it current and synchronized, and how to
+use branches to submit pull requests.
 
-The first step is contributing to the project through the work on code.
+=== Set Up the repository
 
-If you want to take that a step forward and become part of the 42ITy team, 
-a fellow committer on the project then see the Committer Guide
-////////////////////////////////////////////////////////////////////////////////
+1. Set up a GitHub account.
+
+2. Fork the https://github.com/42ity/42ity repository to your GitHub account.
+
+
+To be completed
+
