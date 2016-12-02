@@ -15,7 +15,7 @@ yourself to this file.
 
 == Contribution process and Code style guide
 
-Project 42Ity uses:
+Project 42ITy uses:
 
 * https://rfc.zeromq.org/spec:42/C4/[C4 (Collective Code Construction
 Contract)] process for contributions.
