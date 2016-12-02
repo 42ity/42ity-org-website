@@ -1,75 +1,28 @@
-= 42ITy Contributor guide
+42ITy Contributing Policy
+=========================
+:Email:     EatonIPCOpensource@eaton.com
+:Date:      2.12.2016
+:Revision:  1.2
 
-== 42ITy Contributor guide
+== License
+This project uses the
+https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html[GNU General Public
+License v2+] license, see LICENSE file.
 
-There are many ways you can help make 42ITY™ better!
+== Authors
+The contributors are listed in AUTHORS file. You are responsible for adding
+yourself to this file.
 
-This guide will help answer common questions you may have during your first and
-further contribution.
+== Contribution process and Code style guide
 
-:toc:
+Project 42Ity uses:
 
-== Submitting Issues
+* https://rfc.zeromq.org/spec:42/C4/[C4 (Collective Code Construction
+Contract)] process for contributions.
+* https://rfc.zeromq.org/spec:21/CLASS/[CLASS (C Language Style for
+Scalabilty)] guide for code style. 
 
-Not every contribution comes in the form of code. Submitting, confirming, and
-triaging issues is an important task for any project.
-
-42ITy uses GitHub to track all project issues.
-
-If you are familiar with 42ITy and know the component, that is causing you a
-problem, you can file an issue in the corresponding GitHub project. All of our
-Open Source Software can be found in our GitHub organization at
-link:https://github.com/42ity[https://github.com/42ity].
-
-////////////////////////////////////////////////////////////////////////////////
-FIXME: improvement point
-All projects include GitHub issue templates to help gather information needed
-for a thorough review.
-////////////////////////////////////////////////////////////////////////////////
-
-We ask you not to submit security concerns via GitHub. Please contact the
-development team using link:mailto:EatonIPCOpensource@Eaton.com[Eaton IPC Opensource]
-
-////////////////////////////////////////////////////////////////////////////////
-FIXME: improvement point
-For details on submitting potential security issues please see
-https://www.42ity.org/security/.
-
-In addition to GitHub issues, we also utilize a feedback site that helps our
-product team track and rank feature requests. If you have a feature request,
-this is an excellent place to start: https://feedback.42ity.org.
-
-The following repositories are the preferred locations for the creation of
-issues and bug reports:
-To be completed
-////////////////////////////////////////////////////////////////////////////////
-
-
-== Working on the documentation
-
-FIXME: do we want to have this?
-
-== Working on the code
-
-We do warmly welcome contribution to the source code of 42ITy.
-
-=== Contribution Process
-
-We have a 3 step process for contributions:
-
-* Commit changes to a git branch, making sure to sign-off those changes for the
-Developer Certificate of Origin.
-
-* Create a GitHub Pull Request for your change, following the instructions in
-the pull request template.
-
-* Perform a Code Review with the project maintainers on the pull request.
-
-=== About the GNU General Public License
-
-42ITy uses the GNU General Public License v2+.
-
-FIXME: to be completed
+Please read these documents if you are unfamiliar with it. 
 
 === Developer Certification of Origin (DCO)
 
@@ -87,105 +40,29 @@ include::dco.asciidoc[]
 until each commit has been signed for the DCO, with two exceptions:
 “Obvious Fixes” and pull requests made against the documentation repository
 
-////////////////////////////////////////////////////////////////////////////////
-(https://github.com/42ity/42ity-docs).
-////////////////////////////////////////////////////////////////////////////////
+== Submitting issue 
+42ITy project uses GitHub to track all except security issues.
 
-== The “Obvious Fix” Rule
+If it's possible please submit a minimal program that compiles and reproduces
+or show the issue.
 
-42ITy contribution policy is aimed at encouraging broad participation from our
-community, and minimizing risks to 42ITy and our community due to inappropriate
-contributions of the intellectual property of others.
+If you want to submit a security issue please contact the development team
+using link:mailto:EatonIPCOpensource@Eaton.com[Eaton IPC Opensource]
 
-As a general standard, 42ITy requires every contribution to by signed for the
-Developer Certificate of Origin (DCO).
+/////
+@AQU: Add
 
-HOWEVER, very small contributions such as fixing spelling errors, where the
-content is small enough to not be considered intellectual property, can be
-submitted by a contributor as a patch, without a DCO sign-off. If you submit an
-obvious fix without a DCO sign-off, then you are agreeing that your submission
-is not independently copyrightable. The purpose of this exception is to lower
-the barrier for new contributors to make contributions while retaining the
-integrity of the project and our community.
+<code>
+== Feature request
+If you have a feature request, this is an excellent place to start: https://feedback.42ity.org.
+</code>
 
-=== How does the Obvious Fix Rule Work?
+only when it's ready.
+/////
 
-Any committer may commit fixes without a DCO sign-off for obvious typos, grammar
-mistakes, and formatting problems wherever they may be — in the web pages, API
-documentation, source code, etc.
+== Thanks
+This contributing policy is inspired by https://github.com/zeromq/czmq/blob/master/CONTRIBUTING.md[CZMQ contributing policy].
 
-Whenever you invoke the “obvious fix” rule, please say so in your commit
-message. For example:
+Our undying thanks goes to Pieter Hintjens. *Thank you, Pieter, for everything!*
 
-----------------------------------------------------------------------------
-commit af7daa6490a3b04ed1ae6921d5b701b9558feb2f
-Author: John Doe <johndoe@some.org>
-Date:   Thu Nov 17 13:45:21 2016 +0100
-
-  Fix typo in the README.
-
-  Obvious fix.
-
-----------------------------------------------------------------------------
-
-An obvious fix is a pull request that does not contain creative work. We rely
-on your judgment to determine what is “obvious”; if you’re not sure, just
-contact the development team using
-link:mailto:EatonIPCOpensource@Eaton.com[Eaton IPC Opensource]
-
-As a rule of thumb, changes are obvious fixes if they do not introduce any new
-functionality or creative thinking. As long as the change does not affect
-functionality, some likely examples include the following:
-
-* Spelling/grammar fixes,
-* Correcting typos,
-* Cleaning up comments in the code,
-* Changes to white space or formatting,
-* Bug fixes that change default return values or error codes stored in
-constants, literals, or simple variable types,
-* Adding logging messages or debugging output,
-* Changes to ‘metadata’ files like Makefile, .gitignore, example configuration
-files, build scripts, etc.,
-* Changes that reflect outside facts, like renaming a build directory or
-changing a constant,
-* Changes in build or installation scripts,
-* Re-ordering of objects or subroutines within a source file (such as
-alphabetizing routines),
-* Moving source files from one directory or package to another, with no changes
-in code,
-* Breaking a source file into multiple source files, or consolidating multiple
-source files into one source file, with no change in code behavior,
-* Changes to words or phrases isolated from their context,
-* Changes to typeface.
-
-Things that would still require signing a DCO sign-off would likely include
-things like the following:
-
-* Any of the above actions that result in a change in functionality,
-* A new feature,
-* A translation,
-* Extensive or creative comments.
-
-
-== Coding rules
-
-To be completed
-
-
-
-== Use git
-
-42ITy is maintained on GitHub. To contribute to 42ITy, such as submitting a pull
-request, requires using GitHub and git. The sections below describe how to use
-git to set up the 42ITy repository, keep it current and synchronized, and how to
-use branches to submit pull requests.
-
-=== Set Up the repository
-
-1. Set up a GitHub account.
-
-2. Fork the https://github.com/42ity/42ity repository to your GitHub account.
-
-
-To be completed
 
