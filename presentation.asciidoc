@@ -16,6 +16,19 @@ by Eaton Corporation provided to the community.  While Eaton continues to
 be a key contributor to 42ITy™, the community is already growing.  Please
 link:contact.html[contact us] to find out how you can contribute.
 
+The 42ITy™ platform allows to connect together various software components to:
+
+* gather data from devices (UPS, PDU, environmental sensors, then servers,
+network devices, ...),
+* process these data to produce monitoring metrics,
+* provide interaction to users, through a web user interface,
+* provide interaction to developers and 3rd party software, through a REST API,
+* ...
+
+A typical integration, which serves as a reference implementation, is  
+link:http://www.eaton.eu/ipminfrastructure[Eaton Intelligent Power Controller]:
+
+image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
 
 == Technical overview
 
@@ -53,6 +66,18 @@ service is a dedicated agent, which can run in more instances spawned by broker
 on demand. This is suitable for long running tasks. This is not used in 42ITy™
 currently.
 
+== Protocol overview
+
+42ITy protocol consists of several layers:
+
+* Internet layer - raw libzmq/czmq sockets: This ensures messages are
+serialized, deserialized, working with sockets and abstracts the underlying OS
+layers (unix sockets, tcp sockets, ...).
+* Transport layer - Malamute: This does ensures correct addressing, matching
+subscribers with published messages and services.
+* Application layer - 42ity-proto: this provides a minimal set of messages to
+encode and decode the main types of data flowing in the system.
+
 == Agent overview
 
 Agents communicate through buses maintained by ZeroMQ library. Buses can use
@@ -82,17 +107,117 @@ SERVICE pattern. However this is not used in current version of BIOS.
 FIXME: reference to external doc or include
 
 
-== 42ITy™ sub-projects
+== 42ITy™ external projects
+
+42ITy™ foundations rely on several major opensource projects, to provide some
+generic core services, such as data storage, communication with devices,
+communication between agents, web user interface and REST API, and build added
+value on top of these.
+
+=== Malamute
+
+link:https://github.com/zeromq/malamute[Malamute] is the ZeroMQ Enterprise
+Messaging Broker, providing all the enterprise messaging patterns in one box.
+
+42ITy™ uses Malamute as the broker connecting the different 42ITy™ agents (see
+internal sub-projects).
+
+=== MariaDB - MySQL
+
+link:https://mariadb.org[MariaDB] is one of the most popular database servers in
+the world, made by the original developers of link:http://www.mysql.com[MySQL]
+and guaranteed to stay open source.
+
+42ITy™ uses MariaDB to store the realtime data, gathered from devices, and
+processed metrics.
+
+=== NUT - Network UPS Tools
+
+link:http://networkupstools.org[NUT - Network UPS Tools] is a project which
+provides support for a wide range of power devices, such as UPS, PDU and ATS.
+
+42ITy™ uses to gather data from network power devices.
+
+=== Tntnet
+
+link:http://www.tntnet.org/[Tntnet] is a modular, multithreaded web application
+server for C++.
+
+42ITy™ uses Tntnet to serve web user interface and REST API.
+
+
+
+
+== 42ITy™ internal sub-projects
 
 This chapter presents the different sub-projects that forms the 42ITy™ platform.
 
-Each of these sub-projects are available as repositories on
+Each of these sub-projects is available as a repository on
 link:http://github.com/42ity[42ITy] GitHub page.
 
-=== lib42ityproto
+=== 42ity-core
+
+To be completed
+
+=== 42ity-proto
 
 lib42ityproto is the shared implementation of 42ITy™ core protocols, using
 Malamute and used by the different agents (assets, metrics, alerts).
+
+=== 42ity-asset
+
+To be completed
+
+=== 42ity-graphs
+
+To be completed (agent-cm)
+
+=== 42ity-metric (agent-metric-store)
+
+To be completed
+
+=== 42ity-nut
+
+To be completed
+
+=== 42ity-outage
+
+To be completed
+
+=== 42ity-metric-cache (agent-rt)
+
+To be completed
+
+=== 42ity-smtp
+
+To be completed
+
+=== 42ity-th
+
+To be completed
+
+=== 42ity-tpower
+
+To be completed
+
+=== 42ity-alert-engine-lua (alert-agent)
+
+To be completed
+
+=== 42ity-alert (alerts-list)
+
+To be completed
+
+=== 42ity-composite-metrics
+
+To be completed
+
+=== 42ity-uptime
+
+To be completed
+
+
+
 
 
 
