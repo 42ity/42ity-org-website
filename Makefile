@@ -38,6 +38,11 @@ SCRIPT_FILES =	\
 #	js/ie-emulation-modes-warning.js
 #	js/npm.js
 
+REST_DOC_SOURCE = doc/rest/42ity_rest_api.raml
+REST_DOC_HTML = doc/rest/42ity_rest_api.html
+#REST_DOC_PDF = doc/rest/42ity_rest_api.pdf
+REST_DOCS = $(REST_DOC_HTML)
+
 # Common files that triggers a rebuild of the pages
 COMMON_REQS = bootstrap.conf navinfo.html
 
@@ -77,6 +82,10 @@ presentation.html: presentation.asciidoc $(COMMON_REQS)
 #contributing.html: contributing.asciidoc $(COMMON_REQS)
 #	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ -a toc $<
 
+# RAML (REST API) generation
+$(REST_DOC_HTML): $(REST_DOC_SOURCE)
+	raml2html $< > $@
+
 # Install files to the submodule that points to https://github.com/42ity/42ity.github.io.git
 install:
 	# submodule init/update/sync...
@@ -89,6 +98,7 @@ install:
 	$(foreach image,$(IMAGE_FILES),cp -f $(image) $(OUTDIR)/$(image);)
 	$(foreach css,$(STYLESHEET_FILES),cp -f $(css) $(OUTDIR)/$(css);)
 	$(foreach js,$(SCRIPT_FILES),cp -f $(js) $(OUTDIR)/$(js);)
+	$(foreach file,$(REST_DOCS),cp -f $(file) $(OUTDIR)/$(REST_DOCS);)
 
 clean:
 	rm -f $(HTML_GEN_FILES)
