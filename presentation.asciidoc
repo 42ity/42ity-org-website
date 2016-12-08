@@ -125,11 +125,12 @@ can be easily sent through zeromq channels.
 ==== Actor model
 
 Agents are built on top of link:https://en.wikipedia.org/wiki/Actor_model[actor model].
-That means each maintains own state internally and communicate with the rest of
-the system over sending messages. The communication is asynchronous and agents
-are single threaded with the main loop. For cases the single main loop is not
-enough due performance reasons, agent can distribute workload to others using
-SERVICE pattern. However this is not used in current version of BIOS.
+That means each agent maintains its own state internally and communicate with
+the rest of the system by sending messages. The communication is asynchronous
+and agents are single threaded with the main loop. For cases where the single
+main loop is not enough due to performance reasons, agent can distribute
+workload to others using SERVICE pattern. However this is not used in current
+version of 42ITy.
 
 ==== How to create a new agent
 
