@@ -29,7 +29,8 @@ STYLESHEET_FILES =	\
 SCRIPT_FILES =	\
 	js/42ity.js	\
 	js/bootstrap.min.js	\
-	js/jquery.min.js
+	js/jquery.min.js \
+	js/asciidoc.js
 # TODO: do we actually need the following?
 #	js/html5shiv.min.js	\
 #	js/respond.min.js
