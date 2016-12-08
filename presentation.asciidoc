@@ -14,21 +14,50 @@ enablement platform.
 The initial 42ITy™ platform is a result of more than 3 years of R&D effort
 by Eaton Corporation provided to the community.  While Eaton continues to
 be a key contributor to 42ITy™, the community is already growing.  Please
-link:contact.html[contact us] to find out how you can contribute.
+read the link:contributing.html[Contributor guide] to find out how you can
+contribute.
 
 The 42ITy™ platform allows to connect together various software components to:
 
-* gather data from devices (UPS, PDU, environmental sensors, then servers,
-network devices, ...),
-* process these data to produce monitoring metrics,
+* gather and store monitoring data from devices,
+* process these data to produce trends and metrics,
 * provide interaction to users, through a web user interface,
-* provide interaction to developers and 3rd party software, through a REST API,
-* ...
+* provide interaction to developers and 3rd party software, through a REST API.
 
 A typical integration, which serves as a reference implementation, is  
 link:http://www.eaton.eu/ipminfrastructure[Eaton Intelligent Power Controller]:
 
 image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
+
+=== Current features and capabilities
+
+* Power device monitoring & metrics (rack PDUs, UPSs, ATSs,…)
+* Environmental monitoring & metrics (temp., humidity, dew point,…)
+* Historic & real time data
+* Composite & Datacenter or IT room level metrics
+* Open (REST API) communication interface
+* Micro-services & plug-in architecture
+* Builds (images & packages) provided for both ARM and x86 platforms
+* Easy & Intuitive standards based UI (AngularJS, Bootstrap)
+* Simplified asset management
+
+
+=== Future features and capabilities
+
+* Scale solution to large data center & distributed enterprise monitoring
+** 100s to 1000s of racks
+** HA cluster capability with distributed collector architecture
+
+* Expanded 3rd party monitoring ecosystem
+** More 3rd party power device support
+** Genset monitoring
+** CRAC monitoring
+** 3rd party sensors
+
+* Complex event management policy engine enabling data center service
+optimization via cloud orchestration plugins
+
+
 
 == Technical overview
 
@@ -66,19 +95,19 @@ service is a dedicated agent, which can run in more instances spawned by broker
 on demand. This is suitable for long running tasks. This is not used in 42ITy™
 currently.
 
-== Protocol overview
+=== MQ protocol overview
 
 42ITy protocol consists of several layers:
 
-* Internet layer - raw libzmq/czmq sockets: This ensures messages are
+* Internet layer - raw libzmq/czmq sockets: this ensures messages are
 serialized, deserialized, working with sockets and abstracts the underlying OS
 layers (unix sockets, tcp sockets, ...).
-* Transport layer - Malamute: This does ensures correct addressing, matching
+* Transport layer - Malamute: this does ensures correct addressing, matching
 subscribers with published messages and services.
 * Application layer - 42ity-proto: this provides a minimal set of messages to
 encode and decode the main types of data flowing in the system.
 
-== Agent overview
+=== Agent overview
 
 Agents communicate through buses maintained by ZeroMQ library. Buses can use
 several backend technologies, most notably unix and classic TCP/IP sockets. So
@@ -93,7 +122,7 @@ Generated code does provide nice C API for manipulating with messages as well as
 a way how to encode/decode it to/from zmsg. Thus such generated representations
 can be easily sent through zeromq channels.
 
-=== Actor model
+==== Actor model
 
 Agents are built on top of link:https://en.wikipedia.org/wiki/Actor_model[actor model].
 That means each maintains own state internally and communicate with the rest of
@@ -102,19 +131,30 @@ are single threaded with the main loop. For cases the single main loop is not
 enough due performance reasons, agent can distribute workload to others using
 SERVICE pattern. However this is not used in current version of BIOS.
 
-=== How to create a new agent
+==== How to create a new agent
 
 FIXME: reference to external doc or include
 
+=== REST API communication interface
 
-== 42ITy™ external projects
+42ITy™ also exposes its data through a REST API.
+
+Complete documentation using RAML is available:
+
+* link:doc/rest/42ity_rest_api.raml[RAML format]
+* link:doc/rest/42ity_rest_api.html[HTML format]
+
+
+== 42ITy™ software stack
+
+=== 42ITy™ external projects
 
 42ITy™ foundations rely on several major opensource projects, to provide some
 generic core services, such as data storage, communication with devices,
 communication between agents, web user interface and REST API, and build added
 value on top of these.
 
-=== Malamute
+==== Malamute
 
 link:https://github.com/zeromq/malamute[Malamute] is the ZeroMQ Enterprise
 Messaging Broker, providing all the enterprise messaging patterns in one box.
@@ -122,7 +162,7 @@ Messaging Broker, providing all the enterprise messaging patterns in one box.
 42ITy™ uses Malamute as the broker connecting the different 42ITy™ agents (see
 internal sub-projects).
 
-=== MariaDB - MySQL
+==== MariaDB - MySQL
 
 link:https://mariadb.org[MariaDB] is one of the most popular database servers in
 the world, made by the original developers of link:http://www.mysql.com[MySQL]
@@ -131,14 +171,14 @@ and guaranteed to stay open source.
 42ITy™ uses MariaDB to store the realtime data, gathered from devices, and
 processed metrics.
 
-=== NUT - Network UPS Tools
+==== NUT - Network UPS Tools
 
 link:http://networkupstools.org[NUT - Network UPS Tools] is a project which
 provides support for a wide range of power devices, such as UPS, PDU and ATS.
 
 42ITy™ uses to gather data from network power devices.
 
-=== Tntnet
+==== Tntnet
 
 link:http://www.tntnet.org/[Tntnet] is a modular, multithreaded web application
 server for C++.
@@ -146,78 +186,104 @@ server for C++.
 42ITy™ uses Tntnet to serve web user interface and REST API.
 
 
+=== 42ITy™ internal sub-projects
 
-
-== 42ITy™ internal sub-projects
-
-This chapter presents the different sub-projects that forms the 42ITy™ platform.
+This chapter briefly presents the different sub-projects that forms the 42ITy™
+platform. More detailed information can be found on the dedicated pages of these
+projects.
 
 Each of these sub-projects is available as a repository on
 link:http://github.com/42ity[42ITy] GitHub page.
 
-=== 42ity-core
+==== 42ity-core
+
+* Description: 42ity-core implements the core and central functionalities for
+42ITy.
+* Repository: https://github.com/42ity/42ity-core
+
+==== 42ity-proto
+
+* Description: lib42ityproto is the shared implementation of 42ITy™ core
+protocols, using Malamute and used by the different agents (assets, metrics,
+alerts).
+* Repository: https://github.com/42ity/42ity-proto
+
+==== 42ity-asset
+
+* Description: 42ity-asset is the agent in charge of managing information about
+assets.
+* Repository: https://github.com/42ity/42ity-asset
+
+==== 42ity-graphs
+
+* Description: 42ity-graphs provides computation services on metrics.
+* Repository: https://github.com/42ity/42ity-graphs
+
+==== 42ity-metric
+
+* Description: 42ity-metric provides the persistance layer for metrics.
+* Repository: https://github.com/42ity/42ity-metric
+
+==== 42ity-nut
+
+* Description: 42ity-nut is the agent that acts as a proxy to NUT (Network UPS
+Tools), providing both power devices discovery and configuration, along with
+gathering the data from the NUT communication drivers.
+* Repository: https://github.com/42ity/
+
+==== 42ity-outage
+
+* Description: 42ity-outage is the agent that generates and sends alerts when a
+device does not communicate.
+* Repository: https://github.com/42ity/42ity-outage
+
+==== 42ity-metric-cache
+
+* Description: 42ity-metric-cache is the agent providing current values of any
+metric in the system.
+* Repository: https://github.com/42ity/42ity-metric-cache
+
+==== 42ity-smtp
+
+* Description: 42ity-smtp is the agent in charge of generating and sending
+mail notifications.
+* Repository: https://github.com/42ity/42ity-smtp
+
+==== 42ity-th
 
 To be completed
 
-=== 42ity-proto
+* Description: 42ity-th is the agent communicating with environmental sensors
+to gather temperature and humidity data.
+* Repository: https://github.com/42ity/42ity-th
 
-lib42ityproto is the shared implementation of 42ITy™ core protocols, using
-Malamute and used by the different agents (assets, metrics, alerts).
+==== 42ity-tpower
 
-=== 42ity-asset
+* Description: 42ity-tpower is the agent computing power related metrics.
+* Repository: https://github.com/42ity/42ity-tpower
 
-To be completed
+==== 42ity-alert-engine-lua
 
-=== 42ity-graphs
+* Description: 42ity-alert-engine-lua is the agent that evaluates rules written
+in Lua and produces alerts accordingly.
+* Repository: https://github.com/42ity/42ity-alert-engine-lua
 
-To be completed (agent-cm)
+==== 42ity-alert
 
-=== 42ity-metric (agent-metric-store)
+* Description: 42ity-alert is the agent that provides information about active
+alerts.
+* Repository: https://github.com/42ity/42ity-alert
 
-To be completed
+==== 42ity-composite-metrics
 
-=== 42ity-nut
+* Description: 42ity-composite-metrics is an agent that computes new metrics
+from several other metrics
+* Repository: https://github.com/42ity/42ity-composite-metrics
 
-To be completed
+==== 42ity-uptime
 
-=== 42ity-outage
-
-To be completed
-
-=== 42ity-metric-cache (agent-rt)
-
-To be completed
-
-=== 42ity-smtp
-
-To be completed
-
-=== 42ity-th
-
-To be completed
-
-=== 42ity-tpower
-
-To be completed
-
-=== 42ity-alert-engine-lua (alert-agent)
-
-To be completed
-
-=== 42ity-alert (alerts-list)
-
-To be completed
-
-=== 42ity-composite-metrics
-
-To be completed
-
-=== 42ity-uptime
-
-To be completed
-
-
-
+* Description: 42ity-uptime computes Data Center uptime
+* Repository: https://github.com/42ity/42ity-uptime
 
 
 

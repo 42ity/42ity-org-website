@@ -69,12 +69,12 @@ all: $(HTML_FILES) $(IMAGE_FILES) $(STYLESHEET_FILES) $(SCRIPT_FILES)
 index.html: index.asciidoc $(COMMON_REQS) index-jumboinfo.html
 	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -a jumbotron -a jumboinfo -o $@ $<
 
-# These page have table of content
-#presentation.html: presentation.asciidoc $(COMMON_REQS)
-#	$(ASCIIDOC) $(ASCIIDOC_PARAMS) -o $@ -a toc $<
-#
+# These page have table of content, as a right panel
+presentation.html: presentation.asciidoc $(COMMON_REQS)
+	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ -a toc2 -a toc-placement=right -a toclevels=3 $<
+
 #contributing.html: contributing.asciidoc $(COMMON_REQS)
-#	$(ASCIIDOC) $(ASCIIDOC_PARAMS) -o $@ -a toc $<
+#	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ -a toc $<
 
 # Install files to the submodule that points to https://github.com/42ity/42ity.github.io.git
 install:
