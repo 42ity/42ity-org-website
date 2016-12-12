@@ -40,7 +40,8 @@ modifications. To do so, call:
 $ make install
 
 Then go to the '42ity.github.io' subdirectory, and add/commit the needed files.
-All files under this submodule/repository will go public on http://42ity.org.
+All files under this submodule/repository will go public on http://42ity.org as
+soon as these are committed.
 
 == Licenses
 
