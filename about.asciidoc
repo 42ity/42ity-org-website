@@ -13,5 +13,6 @@ enablement platform.
 
 The initial 42ITY™ platform is a result of more than 3 years of R&D effort
 by Eaton Corporation provided to the community.  While Eaton continues to
-be a key contributor to 42ITy, the community is already growing.  Please
-link:contact.html[contact us] to find out how you can contribute.
+be a key contributor to 42ITy, the community is already growing. Please
+read the link:contributing.html[Contributor guide] to find out how you can
+contribute.
