@@ -1,3 +1,10 @@
+C Language Style for Scalability
+================================
+Pieter Hintjens <ph@imatix.com>
+
+
+== C Language Style for Scalability
+
 The C Language Style for Scalability (CLASS) defines a consistent style
 and organization for scalable C library and application code built on
 modern C compilers and operating systems. CLASS aims to collect industry
