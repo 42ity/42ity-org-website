@@ -9,7 +9,9 @@ HTML_SOURCES = 	\
 	presentation.asciidoc	\
 	contributing.asciidoc	\
 	about.asciidoc \
-	contact.asciidoc
+	contact.asciidoc \
+	c4.asciidoc \
+	class.asciidoc
 
 HTML_GEN_FILES = $(HTML_SOURCES:.asciidoc=.html)
 
@@ -64,6 +66,8 @@ ADOC_PARAMS_COMMON =	\
 	--attribute iconsdir=. \
 	--attribute script=42ity.js \
 	--attribute bootstrapdir=. \
+	--attribute icons \
+	--attribute iconsdir=images/icons/ \
 	-f bootstrap.conf
 
 all: $(HTML_FILES) $(IMAGE_FILES) $(STYLESHEET_FILES) $(SCRIPT_FILES)
@@ -79,8 +83,8 @@ index.html: index.asciidoc $(COMMON_REQS) index-jumboinfo.html
 presentation.html: presentation.asciidoc $(COMMON_REQS)
 	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ -a toc2 -a toc-placement=right -a toclevels=3 $<
 
-#contributing.html: contributing.asciidoc $(COMMON_REQS)
-#	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ -a toc $<
+class.html: class.asciidoc $(COMMON_REQS)
+	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ -a toc2 -a toc-placement=right -a toclevels=3 $<
 
 # RAML (REST API) generation
 $(REST_DOC_HTML): $(REST_DOC_SOURCE)
