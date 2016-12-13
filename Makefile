@@ -22,7 +22,10 @@ HTML_FILES = $(HTML_GEN_FILES) \
 IMAGE_FILES =	\
 	favicon.ico	\
 	images/42ITy-SW-arch.png	\
-	images/Eaton-IPC.png
+	images/Eaton-IPC.png	\
+	images/icons/important.png \
+	images/icons/note.png \
+	images/icons/warning.png
 
 STYLESHEET_FILES =	\
 	css/42ity.css	\
