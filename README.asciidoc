@@ -25,28 +25,36 @@ link:http://asciidoc.org/INSTALL.html[Asciidoc] website for more information.
 - The generation of REST API documentation in HTML format requires raml2html.
 You can install it using:
 
+----------------------------------------------------------------------------
 $ npm i -g raml2html
+----------------------------------------------------------------------------
 
 For more information, check the
 link:https://github.com/raml2html/raml2html[Github project page]
 
 - Get the content of the present repository
 
+----------------------------------------------------------------------------
 $ git clone https://github.com/42ity/42ity-org-website.git
+----------------------------------------------------------------------------
 
 
 == Generate the website
 
 From the root of the 42ity-org-website directory, simply call:
 
+----------------------------------------------------------------------------
 $ make
+----------------------------------------------------------------------------
 
 This will build all the HTML files needed for the website.
 
 If you are a maintainer of the 42ITy website, you will also want to publish your
 modifications. To do so, call:
 
+----------------------------------------------------------------------------
 $ make install
+----------------------------------------------------------------------------
 
 Then go to the '42ity.github.io' subdirectory, and add/commit the needed files.
 All files under this submodule/repository will go public on http://42ity.org as
