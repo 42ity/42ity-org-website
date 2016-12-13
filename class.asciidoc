@@ -10,8 +10,9 @@ and organization for scalable C library and application code built on
 modern C compilers and operating systems. CLASS aims to collect industry
 best practice into one reusable standard.
 
-CLASS was created by Pieter Hintjens, originally for the ZeroMQ project, and is
-available as a ZeroMQ RFC (link:https://rfc.zeromq.org/spec:21/CLASS/[CLASS (C Language Style for Scalability)] ).
+CLASS was created by Pieter Hintjens, originally for the ZeroMQ project,
+and is available as a ZeroMQ RFC
+(link:https://rfc.zeromq.org/spec:21/CLASS/[CLASS (C Language Style for Scalability)] ).
 
 [[license]]
 License
