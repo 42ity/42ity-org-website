@@ -2,22 +2,22 @@
 
 == General overview
 
-The 42ITy™ project promotes the global development, distribution and
-adoption of the 42ITy™ platform as a next generation Data Center Service
+The 42ITy(TM) project promotes the global development, distribution and
+adoption of the 42ITy(TM) platform as a next generation Data Center Service
 Optimization enablement platform.
 
 The goal is to serve developers, users and the entire data center ecosystem
-by providing a set of shared resources to grow the adoption of 42ITy™ as
+by providing a set of shared resources to grow the adoption of 42ITy(TM) as
 the only open source, next generation Data Center Service Optimization
 enablement platform.
 
-The initial 42ITy™ platform is a result of more than 3 years of R&D effort
+The initial 42ITy(TM) platform is a result of more than 3 years of R&D effort
 by Eaton Corporation provided to the community.  While Eaton continues to
-be a key contributor to 42ITy™, the community is already growing.  Please
+be a key contributor to 42ITy(TM), the community is already growing.  Please
 read the link:contributing.html[Contributor guide] to find out how you can
 contribute.
 
-The 42ITy™ platform allows to connect together various software components to:
+The 42ITy(TM) platform allows to connect together various software components to:
 
 * gather and store monitoring data from devices,
 * process these data to produce trends and metrics,
@@ -57,12 +57,12 @@ image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
 ** CRAC monitoring
 ** 3rd party sensors
 
-* More depending on the 42ITy Community and partners feedback and requests.
+* More depending on the 42ITy(TM) Community and partners feedback and requests.
 
 
 == Technical overview
 
-The 42ITy™ software platform is a Service Oriented Architecture (SOA), made of a
+The 42ITy(TM) software platform is a Service Oriented Architecture (SOA), made of a
 collection of software packages communicating through a MOM (Message-oriented
 middleware), built around the link:http://zeromq.org[ZeroMQ] technology stack.
 
@@ -70,8 +70,8 @@ The software is divided in a set of independent components, called *agent*.
 
 image:images/42ITy-SW-arch.png[42ITy SW architecture]
 
-Because we expect an arbitrary number of agents to be connected together, 42ITy™
-uses a central message broker called Malamute.
+Because we expect an arbitrary number of agents to be connected together,
+42ITy(TM) uses a central message broker called Malamute.
 
 Malamute is built using the same ZeroMQ stack, so integrates with the code
 easily. The purpose of malamute is to abstract from maintaining peer-to-peer
@@ -93,12 +93,12 @@ code until there is a result (or timeout).
 
 * Service:
 service is a dedicated agent, which can run in more instances spawned by broker
-on demand. This is suitable for long running tasks. This is not used in 42ITy™
-currently.
+on demand. This is suitable for long running tasks. This is not used in
+42ITy(TM) currently.
 
 === MQ protocol overview
 
-42ITy protocol consists of several layers:
+42ITy(TM) protocol consists of several layers:
 
 * Internet layer - raw libzmq/czmq sockets: this ensures messages are
 serialized, deserialized, working with sockets and abstracts the underlying OS
@@ -114,7 +114,7 @@ Agents communicate through buses maintained by ZeroMQ library. Buses can use
 several backend technologies, most notably unix and classic TCP/IP sockets. So
 agents can be placed on the same machine or on arbitrary number of other
 machines (currently out of scope). Because basic messaging using zeromq messages
-(zmsg) is error prone with a lot of code duplication, 42ITy™ project uses
+(zmsg) is error prone with a lot of code duplication, 42ITy(TM) project uses
 serialization library called zproto. It defines a model of message in
 declarative XML language and code is generated using a template language called
 gsl.
@@ -132,7 +132,7 @@ with the rest of the system by sending messages. The communication is
 asynchronous and agents are single threaded with the main loop. For cases where
 the single main loop is not enough due to performance reasons, agent can
 distribute workload to others using SERVICE pattern. However this is not used in
-current version of 42ITy.
+current version of 42ITy(TM).
 
 ==== How to create a new agent
 
@@ -140,7 +140,7 @@ FIXME: reference to external doc or include
 
 === REST API communication interface
 
-42ITy™ also exposes its data through a REST API.
+42ITy(TM) also exposes its data through a REST API.
 
 Complete documentation using RAML is available:
 
@@ -148,11 +148,11 @@ Complete documentation using RAML is available:
 * link:doc/rest/42ity_rest_api.html[RAML HTML format]
 
 
-== 42ITy™ software stack
+== 42ITy(TM) software stack
 
-=== 42ITy™ external projects
+=== 42ITy(TM) external projects
 
-42ITy™ foundations rely on several major opensource projects, to provide some
+42ITy(TM) foundations rely on several major opensource projects, to provide some
 generic core services, such as data storage, communication with devices,
 communication between agents, web user interface and REST API, and build added
 value on top of these.
@@ -162,7 +162,7 @@ value on top of these.
 link:https://github.com/zeromq/malamute[Malamute] is the ZeroMQ Enterprise
 Messaging Broker, providing all the enterprise messaging patterns in one box.
 
-42ITy™ uses Malamute as the broker connecting the different 42ITy™ agents (see
+42ITy(TM) uses Malamute as the broker connecting the different 42ITy(TM) agents (see
 internal sub-projects).
 
 ==== MariaDB - MySQL
@@ -171,7 +171,7 @@ link:https://mariadb.org[MariaDB] is one of the most popular database servers in
 the world, made by the original developers of link:http://www.mysql.com[MySQL]
 and guaranteed to stay open source.
 
-42ITy™ uses MariaDB to store the realtime data, gathered from devices, and
+42ITy(TM) uses MariaDB to store the realtime data, gathered from devices, and
 processed metrics.
 
 ==== NUT - Network UPS Tools
@@ -179,19 +179,19 @@ processed metrics.
 link:http://networkupstools.org[NUT - Network UPS Tools] is a project which
 provides support for a wide range of power devices, such as UPS, PDU and ATS.
 
-42ITy™ uses to gather data from network power devices.
+42ITy(TM) uses to gather data from network power devices.
 
 ==== Tntnet
 
 link:http://www.tntnet.org/[Tntnet] is a modular, multithreaded web application
 server for C++.
 
-42ITy™ uses Tntnet to serve web user interface and REST API.
+42ITy(TM) uses Tntnet to serve web user interface and REST API.
 
 
-=== 42ITy™ internal sub-projects
+=== 42ITy(TM) internal sub-projects
 
-This chapter briefly presents the different sub-projects that forms the 42ITy™
+This chapter briefly presents the different sub-projects that forms the 42ITy(TM)
 platform. More detailed information can be found on the dedicated pages of these
 sub-projects.
 
@@ -206,7 +206,7 @@ link:http://github.com/42ity[42ITy] GitHub page.
 
 ==== fty-proto
 
-* Description: fty-proto is the shared implementation of 42ITy™ core
+* Description: fty-proto is the shared implementation of 42ITy(TM) core
 protocols, using Malamute and used by the different agents (assets, metrics,
 alerts).
 * Repository: https://github.com/42ity/fty-proto
@@ -295,13 +295,13 @@ main power sources was offline.
 
 === Services dependencies
 
-The systemd system and service manager is responsible for controlling how 42ITy™
+The systemd system and service manager is responsible for controlling how 42ITy(TM)
 services are started, stopped and otherwise managed. It uses an event-based and
 dependencies based approach to optimize how services are managed (started,
 stopped, reloaded).
 
 The figure bellow illustrates the dependencies relationships for services
-running on 42ITy™.
+running on 42ITy(TM).
 
 image:images/42ITy-svc-deps.png[42ITy services dependencies]
 

@@ -214,4 +214,4 @@ others to learn the Improvement Kata).
 projects.
 * link:http://www.ossec.net/[OSSEC] link:https://ossec-docs.readthedocs.org/en/latest/development/oRFC/orfc-*html[uses the C4 process].
 * The link:http://www.machinekit.io/[Machinekit] community link:http://www.machinekit.io/about/[uses the C4 process].
-* The link:http://42ity.org[42ITy project] uses the C4 process for many sub-projects.
+* The link:http://42ity.org[42ITy(TM) project] uses the C4 process for many sub-projects.
