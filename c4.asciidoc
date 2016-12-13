@@ -91,7 +91,7 @@ become a Contributor under the terms of this contract.
 === 2.2. Licensing and Ownership
 
 1. The project SHALL use the GNU General Public License version 2 of the License
-or (at your option) any later version).
+or (at your option) any later version.
 2. All contributions to the project source code ("patches") SHALL use the same
 license as the project.
 3. All patches are owned by their authors. There SHALL NOT be any copyright
