@@ -37,6 +37,10 @@ image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
 * Composite & Datacenter or IT room level metrics
 * Open (REST API) communication interface
 * Micro-services & plug-in architecture
+
+
+=== Future availability
+
 * Builds (images & packages) provided for both ARM and x86 platforms
 * Easy & Intuitive standards based UI (AngularJS, Bootstrap)
 * Simplified asset management
@@ -46,7 +50,6 @@ image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
 
 * Scale solution to large data center & distributed enterprise monitoring
 ** 100s to 1000s of racks
-** HA cluster capability with distributed collector architecture
 
 * Expanded 3rd party monitoring ecosystem
 ** More 3rd party power device support
@@ -54,9 +57,7 @@ image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
 ** CRAC monitoring
 ** 3rd party sensors
 
-* Complex event management policy engine enabling data center service
-optimization via cloud orchestration plugins
-
+* More depending on the 42ITy Community and partners feedback and requests.
 
 
 == Technical overview
@@ -124,13 +125,14 @@ can be easily sent through zeromq channels.
 
 ==== Actor model
 
-Agents are built on top of link:https://en.wikipedia.org/wiki/Actor_model[actor model].
-That means each agent maintains its own state internally and communicate with
-the rest of the system by sending messages. The communication is asynchronous
-and agents are single threaded with the main loop. For cases where the single
-main loop is not enough due to performance reasons, agent can distribute
-workload to others using SERVICE pattern. However this is not used in current
-version of 42ITy.
+Agents are built on top of the
+link:https://en.wikipedia.org/wiki/Actor_model[actor model].
+That means that each agent maintains its own state internally and communicate
+with the rest of the system by sending messages. The communication is
+asynchronous and agents are single threaded with the main loop. For cases where
+the single main loop is not enough due to performance reasons, agent can
+distribute workload to others using SERVICE pattern. However this is not used in
+current version of 42ITy.
 
 ==== How to create a new agent
 
@@ -142,8 +144,8 @@ FIXME: reference to external doc or include
 
 Complete documentation using RAML is available:
 
-* link:doc/rest/42ity_rest_api.raml[RAML format]
-* link:doc/rest/42ity_rest_api.html[HTML format]
+* link:doc/rest/42ity_rest_api.raml[RAML source format]
+* link:doc/rest/42ity_rest_api.html[RAML HTML format]
 
 
 == 42ITy™ software stack
