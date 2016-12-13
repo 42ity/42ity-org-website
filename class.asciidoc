@@ -226,9 +226,12 @@ The project SHOULD install these files:
 
 * The project header files and all class header files that form part of
 the public API.
-* The project library, named with the project prefix (libmyp.a on POSIX
-platforms, myp.dll on Windows).
+* The project library, named with the project prefix (`libmyp.a` and/or
+`libmyp.so(.*)` on POSIX platforms and `libmyp.pc` declarations for the
+`pkg-config`, and `myp.dll` on Windows).
 * Command-line tools, if present.
+* Distribution-dependent service files for programs intended to run as
+daemons (e.g. classic init-scripts, systemd units, Solaris SMF manifests).
 
 [[dependencies]]
 Dependencies
