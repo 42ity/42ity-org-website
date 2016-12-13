@@ -105,7 +105,7 @@ serialized, deserialized, working with sockets and abstracts the underlying OS
 layers (unix sockets, tcp sockets, ...).
 * Transport layer - Malamute: this does ensures correct addressing, matching
 subscribers with published messages and services.
-* Application layer - 42ity-proto: this provides a minimal set of messages to
+* Application layer - fty-proto: this provides a minimal set of messages to
 encode and decode the main types of data flowing in the system.
 
 === Agent overview
@@ -193,100 +193,103 @@ server for C++.
 
 This chapter briefly presents the different sub-projects that forms the 42ITy™
 platform. More detailed information can be found on the dedicated pages of these
-projects.
+sub-projects.
 
 Each of these sub-projects is available as a repository on
 link:http://github.com/42ity[42ITy] GitHub page.
 
-==== 42ity-core
+==== fty-core
 
-* Description: 42ity-core implements the core and central functionalities for
+* Description: fty-core implements the core and central functionalities for
 42ITy.
-* Repository: https://github.com/42ity/42ity-core
+* Repository: https://github.com/42ity/fty-core
 
-==== 42ity-proto
+==== fty-proto
 
-* Description: lib42ityproto is the shared implementation of 42ITy™ core
+* Description: fty-proto is the shared implementation of 42ITy™ core
 protocols, using Malamute and used by the different agents (assets, metrics,
 alerts).
-* Repository: https://github.com/42ity/42ity-proto
+* Repository: https://github.com/42ity/fty-proto
 
-==== 42ity-asset
+==== fty-asset
 
-* Description: 42ity-asset is the agent in charge of managing information about
+* Description: fty-asset is the agent in charge of managing information about
 assets.
-* Repository: https://github.com/42ity/42ity-asset
+* Repository: https://github.com/42ity/fty-asset
 
-==== 42ity-graphs
+==== fty-metric-compute
 
-* Description: 42ity-graphs provides computation services on metrics.
-* Repository: https://github.com/42ity/42ity-graphs
+* Description: fty-metric-compute provides computation services on metrics.
+* Repository: https://github.com/42ity/fty-metric-compute
 
-==== 42ity-metric
+==== fty-metric-store
 
-* Description: 42ity-metric provides the persistance layer for metrics.
-* Repository: https://github.com/42ity/42ity-metric
+* Description: fty-metric-store provides the persistance layer for metrics.
+* Repository: https://github.com/42ity/fty-metric-store
 
-==== 42ity-nut
+==== fty-nut
 
-* Description: 42ity-nut is the agent that acts as a proxy to NUT (Network UPS
-Tools), providing both power devices discovery and configuration, along with
-gathering the data from the NUT communication drivers.
-* Repository: https://github.com/42ity/
+* Description: fty-nut is an agent that polls power devices (UPS and PDU) using
+NUT drivers, through NUT server (upsd). It collects current measurements and
+publishes them. It also collects static inventory data (assets) and publishes
+them.
+* Repository: https://github.com/42ity/fty-nut
 
-==== 42ity-outage
+==== fty-outage
 
-* Description: 42ity-outage is the agent that generates and sends alerts when a
+* Description: fty-outage is the agent that generates and sends alerts when a
 device does not communicate.
-* Repository: https://github.com/42ity/42ity-outage
+* Repository: https://github.com/42ity/fty-outage
 
-==== 42ity-metric-cache
+==== fty-metric-cache
 
-* Description: 42ity-metric-cache is the agent providing current values of any
+* Description: fty-metric-cache is the agent providing current values of any
 metric in the system.
-* Repository: https://github.com/42ity/42ity-metric-cache
+* Repository: https://github.com/42ity/fty-metric-cache
 
-==== 42ity-smtp
+==== fty-email
 
-* Description: 42ity-smtp is the agent in charge of generating and sending
-mail notifications.
-* Repository: https://github.com/42ity/42ity-smtp
+* Description: fty-email is the agent in charge of generating and sending
+email notifications.
+* Repository: https://github.com/42ity/fty-email
 
-==== 42ity-th
+==== fty-sensor-env
 
-To be completed
+* Description: fty-sensor-env is the agent communicating with environmental
+sensors to gather temperature and humidity data.
+* Repository: https://github.com/42ity/fty-sensor-env
 
-* Description: 42ity-th is the agent communicating with environmental sensors
-to gather temperature and humidity data.
-* Repository: https://github.com/42ity/42ity-th
+==== fty-metric-tpower
 
-==== 42ity-tpower
+* Description: fty-metric-tpower is the agent computing total datacenter and
+rack power metrics from measurements.
+* Repository: https://github.com/42ity/fty-metric-tpower
 
-* Description: 42ity-tpower is the agent computing power related metrics.
-* Repository: https://github.com/42ity/42ity-tpower
+==== fty-alert-engine
 
-==== 42ity-alert-engine-lua
-
-* Description: 42ity-alert-engine-lua is the agent that evaluates rules written
+* Description: fty-alert-engine is the agent that evaluates rules written
 in Lua and produces alerts accordingly.
-* Repository: https://github.com/42ity/42ity-alert-engine-lua
+* Repository: https://github.com/42ity/fty-alert-engine
 
-==== 42ity-alert
+==== fty-alert-list
 
-* Description: 42ity-alert is the agent that provides information about active
-alerts.
-* Repository: https://github.com/42ity/42ity-alert
+* Description: fty-alert-list is the agent that provides information about
+active and resolved alerts.
+* Repository: https://github.com/42ity/fty-alert-list
 
-==== 42ity-composite-metrics
+==== fty-metric-composite
 
-* Description: 42ity-composite-metrics is an agent that computes new metrics
-from several other metrics
-* Repository: https://github.com/42ity/42ity-composite-metrics
+* Description: fty-metric-composite is an agent that generates composite
+metrics, that is to say metrics which are computed from several other metrics.
+Rules are defined as scripts written in Lua.
+* Repository: https://github.com/42ity/fty-metric-composite
 
-==== 42ity-uptime
+==== fty-kpi-power-uptime
 
-* Description: 42ity-uptime computes Data Center uptime
-* Repository: https://github.com/42ity/42ity-uptime
+* Description: fty-kpi-power-uptime computes and publishes KPI (Key Performance
+Indicator) for data center power uptime, taking into account how long one of the
+main power sources was offline.
+* Repository: https://github.com/42ity/fty-kpi-power-uptime
 
 
 
