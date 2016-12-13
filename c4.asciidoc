@@ -8,10 +8,13 @@ v2
 The Collective Code Construction Contract (C4) is an evolution of the github.com
 link:https://help.github.com/articles/about-pull-requests/[Fork + Pull Model],
 aimed at providing an optimal collaboration model for free software projects.
+
 C4 was created by Pieter Hintjens, originally for the ZeroMQ project, and is
 available as a ZeroMQ RFC (link:https://rfc.zeromq.org/spec:42/C4/[C4 (Collective Code Construction Contract)] ).
-This is revision 2 of the C4 specification and deprecates ZeroMQ RFC 22 (aka
-"C4.1") and ZeroMQ RFC 16 (aka "original C4").
+
+This C4 version is based on revision 2 of the C4 specification, and limits
+applicable license to GNU General Public License version 2 or (at your option)
+any later version) for the 42ITy(TM) project.
 
 == License
 
@@ -87,8 +90,8 @@ become a Contributor under the terms of this contract.
 
 === 2.2. Licensing and Ownership
 
-1. The project SHALL use a share-alike license such as the MPLv2, or a GPLv3
-variant thereof (GPL, LGPL, AGPL).
+1. The project SHALL use the GNU General Public License version 2 of the License
+or (at your option) any later version).
 2. All contributions to the project source code ("patches") SHALL use the same
 license as the project.
 3. All patches are owned by their authors. There SHALL NOT be any copyright
