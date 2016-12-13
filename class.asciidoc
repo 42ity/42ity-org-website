@@ -49,7 +49,7 @@ Language
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in RFC 2119 (see
+document are to be interpreted as described in IETF RFC 2119 (see
 "http://tools.ietf.org/html/rfc2119[Key words for use in RFCs to
 Indicate Requirement Levels]").
 
@@ -63,7 +63,8 @@ specific and well-known quality problems with C projects. It evolved
 from the style guide of the ZeroMQ https://github.com/zeromq/czmq[CZMQ
 project]. CLASS is plug compatible with the "coding style guide"
 requirements of the C4 process (see
-"http://rfc.zeromq.org/spec:16[Collective Code Construction Contract]").
+"http://rfc.zeromq.org/spec:16[Collective Code Construction Contract]")
+and its revisions.
 
 The specific goals for this Specification are to:
 
