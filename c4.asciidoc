@@ -10,7 +10,8 @@ link:https://help.github.com/articles/about-pull-requests/[Fork + Pull Model],
 aimed at providing an optimal collaboration model for free software projects.
 C4 was created by Pieter Hintjens, originally for the ZeroMQ project, and is
 available as a ZeroMQ RFC (link:https://rfc.zeromq.org/spec:42/C4/[C4 (Collective Code Construction Contract)] ).
-This is revision 2 of the C4 specification and deprecates RFC 22.
+This is revision 2 of the C4 specification and deprecates ZeroMQ RFC 22 (aka
+"C4.1") and ZeroMQ RFC 16 (aka "original C4").
 
 == License
 
@@ -43,7 +44,7 @@ reviews.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in link:http://tools.ietf.org/html/rfc2119[RFC 2119].
+interpreted as described in link:http://tools.ietf.org/html/rfc2119[IETF RFC 2119].
 
 == 1. Goals
 
@@ -210,4 +211,4 @@ others to learn the Improvement Kata).
 projects.
 * link:http://www.ossec.net/[OSSEC] link:https://ossec-docs.readthedocs.org/en/latest/development/oRFC/orfc-*html[uses the C4 process].
 * The link:http://www.machinekit.io/[Machinekit] community link:http://www.machinekit.io/about/[uses the C4 process].
-* The link:http://42ity.org[42ITy project] uses the C4 process for many projects.
+* The link:http://42ity.org[42ITy project] uses the C4 process for many sub-projects.
