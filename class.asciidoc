@@ -10,8 +10,22 @@ and organization for scalable C library and application code built on
 modern C compilers and operating systems. CLASS aims to collect industry
 best practice into one reusable standard.
 
-CLASS was created by Pieter Hintjens, originally for the ZeroMQ project, and is
-available as a ZeroMQ RFC (link:https://rfc.zeromq.org/spec:21/CLASS/[CLASS (C Language Style for Scalability)] ).
+CLASS was created by Pieter Hintjens, originally for the ZeroMQ project,
+and is available as a ZeroMQ RFC
+(link:https://rfc.zeromq.org/spec:21/CLASS/[CLASS (C Language Style for Scalability)] ).
+
+This version of CLASS amends the original linked above in a few points:
+
+* clarification of ZeroMQ vs. IETF "RFC"s;
+* added Unix shared libraries, pkg-config declarations, and service
+management definitions for daemons to the list of things that a project
+SHOULD deliver;
+* revised "verbatim" markup in-lined in the text, and fixed a few typos;
+* requirement by default of `asciidoc` compatible markup for text files
+and source comments, unless a different markup is not easily avoidable;
+* added standard text-processing programs among "dependencies" for the
+projects which aim to deliver rendered end-user documentation formats;
+* the template README file markup made compatible with `asciidoc`.
 
 [[license]]
 License
@@ -49,7 +63,7 @@ Language
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in RFC 2119 (see
+document are to be interpreted as described in IETF RFC 2119 (see
 "http://tools.ietf.org/html/rfc2119[Key words for use in RFCs to
 Indicate Requirement Levels]").
 
@@ -63,7 +77,8 @@ specific and well-known quality problems with C projects. It evolved
 from the style guide of the ZeroMQ https://github.com/zeromq/czmq[CZMQ
 project]. CLASS is plug compatible with the "coding style guide"
 requirements of the C4 process (see
-"http://rfc.zeromq.org/spec:16[Collective Code Construction Contract]").
+"http://rfc.zeromq.org/spec:16[Collective Code Construction Contract]")
+and its revisions.
 
 The specific goals for this Specification are to:
 
@@ -174,7 +189,7 @@ Project Focus
 ^^^^^^^^^^^^^
 
 The project SHALL focus on one identifiable problem space, which SHALL
-be stated explicitly in the project README.
+be stated explicitly in the project `README`.
 
 [[project-name]]
 Project Name
@@ -183,14 +198,14 @@ Project Name
 The project SHALL have these short names and abbreviations:
 
 * A _project short name_ used in paths and URLs that identify the
-project. This would be used for instance in the GitHub project name. In
-this Specification we will use myproject as the example.
+project. This would be used for instance in the GitHub project name.
+In this Specification we will use `myproject` as the example.
 * A _project prefix_ used for project files, output libraries, and
 method names. This would be used for instance in the library produced
 for the project. The prefix MAY be an acronym. In this Specification we
-will use myp as the example.
+will use `myp` as the example.
 
-These names SHALL be noted in the project README.
+These names SHALL be noted in the project `README`.
 
 [[general-layout]]
 General Layout
@@ -198,38 +213,217 @@ General Layout
 
 The project SHALL contain at least these files and directories:
 
-* A README file that refers to this Specification and provides other
+* A `README` file that refers to this Specification and provides other
 necessary information about the project.
-* A license file (e.g., COPYING or LICENSE) that specifies the terms of
-distribution for the project.
-* An include directory for all header files.
-* A src directory for all library source files.
-* The _public header file_ (include/myproject.h).
+* A license file (e.g., `COPYING` or `LICENSE`) that specifies the terms
+of distribution for the project.
+* An `include` directory for all header files.
+* A `src` directory for all library source files.
+* The _public header file_ (`include/myproject.h`).
 * Scripts and makefiles to build and test the project on at least one
 platform.
 
 The project MAY contain these files and directories which MUST have
 these names if present at all:
 
-* An AUTHORS file listing all contributors to the project.
-* A doc directory containing documentation.
-* The _internal header file_ (src/myp_classes.h).
+* An `AUTHORS` file listing all contributors to the project.
+* A `doc` directory containing documentation.
+* The _internal header file_ (`src/myp_classes.h`).
 
 The project SHOULD install these files:
 
 * The project header files and all class header files that form part of
 the public API.
-* The project library, named with the project prefix (libmyp.a on POSIX
-platforms, myp.dll on Windows).
+* The project library, named with the project prefix (`libmyp.a` and/or
+`libmyp.so(.*)` on POSIX platforms and `libmyp.pc` declarations for the
+`pkg-config`, and `myp.dll` on Windows).
 * Command-line tools, if present.
+* Distribution-dependent service files for programs intended to run as
+daemons (e.g. classic init-scripts, systemd units, Solaris SMF manifests).
+
+[[documentation-sources]]
+Documentation Sources
+^^^^^^^^^^^^^^^^^^^^^
+
+The following guidelines apply to text provided as part of project sources
+(including the `README`, `AUTHORS` and `LICENSE` files mandated above):
+
+* Guidelines regarding plaintext markup formats:
+** Documentation provided and maintained as part of the project SHALL NOT
+use file formats that require non-FOSS software for processing. Plaintext
+files are preferred for text documentation, PNG for raster graphics and
+SVG for vector graphics. Project SHOULD consider that the build farm hosts
+MAY not have installed the graphical environment and desktop/GUI document
+processing software, so optional generation of documentation in formats
+comfortable for end-user consumption SHOULD rely on common processing
+tools outlined in the <<dependencies,"Dependencies">> section.
+** Committed text and documentation files SHOULD use `asciidoc` markup if
+they are structured (including sources for "man" pages, project standards
+and contracts, user or developer instructions, etc.)
+*** For details on the syntax and examples of `asciidoc` markup see
+http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/ and its source
+https://raw.githubusercontent.com/asciidoctor/asciidoctor.org/master/docs/asciidoc-syntax-quick-reference.adoc
+*** There are various reasonable choices for some aspect of text formatting
+and style. Whichever one is picked, it SHOULD apply to the whole document
+or its considerably large portions (e.g. lists of items, as detailed below).
+** Texts MAY be in other markups (e.g. plain ASCII, or markdown) only if
+they were originally imported from other sources or projects, and if regular
+subsequent synchronisation, re-import or other comparison to origin of
+these files is anticipated (e.g. a copy of the standard text of a license
+chosen by the project, or third party project sources co-distributed as a
+dependency -- where such projects encourage co-distribution rather than
+release/package dependencies with a clean separation of borders), or if
+the text file is unstructured (e.g. a line-by-line list of authors without
+categories... note that almost anything else is inherently structured).
+** Project building recipes MAY assume by default that `asciidoc` program
+is the proper tool for processing of committed (or interim generated) text
+files into other end-user formats, such as MAN, HTML or PDF variants of the
+documentation. Any other cases should be specifically handled by the recipes
+as exceptions to the common rule.
+** It is RECOMMENDED that source text files using `asciidoc`-compatible
+markup be named with an `.asciidoc` or `.adoc` extension (consistently for
+the whole project), rather than the common indeterminate `.txt` extension
+or lack of any extension.
+** It is RECOMMENDED that text files in non-`asciidoc` compatible markups
+use their appropriate extensions (e.g. `.md` for MarkDown), rather than a
+common indeterminate `.txt` extension or lack of any extension.
+* Guidelines on use of whitespaces and blank lines:
+** Paragraphs, separate lists of items, code example blocks and other similar
+groupings of content lines processed specially by the rendering tools SHALL
+be separated (preceded and followed) by at least one blank line. Section
+headers MAY be visibly stressed by preceding or surrounding them with two
+blank lines; if picked, this formatting option should be applied consistently
+to the whole document.
+** Trailing whitespace characters (SPACE, TAB) and lines fully consisting of
+whitespace SHOULD be avoided.
+** Sequences of more than one whitespace (e.g. two or more SPACE characters in
+a row) SHOULD be avoided, wherever such sequences are not part of indentation
+or do not carry other contextual meaning.
+** If a style is picked to separate sentences in a paragaph with a period `.`
+followed by two SPACE characters, this style SHALL be used consistenly in
+the whole document.
+* Depending on contents, one of several formatting styles may be applicable
+to lists of items:
+** Lines of bulleted or numbered lists SHALL have the same style regarding a
+final punctuation character, consistent within at least the list itself --
+usually semicolon `;` for relatively short entries, period `.` for full
+sentences (especially when there are several sentences per list item), and
+a comma `,` optionally with trailing conjunctions (`and`/`or`)  for shortest
+entries that can be read together as parts of a larger sentence; and the last
+line of the list SHALL end with a period `.` character.
+** An alternative style is to have _no trailing punctuation_ for list items
+which otherwise are each a single regular sentence. For lists represented
+with such choice of style, the consistent option is that the last line also
+has no punctuation (no period `.`) as its last character.
+** If an explanatory (semi-)sentence or paragraph precedes such a list, that
+sentence SHOULD end with a colon `:` followed by a blank line (for `asciidoc`
+markup). If the preceding sentence or paragraph is not an introduction into
+the contents of the list, it SHOULD be formatted as a usual paragraph, ending
+with a period `.` character.
+** Nested lists are considered as separate lists; the last line of each such
+list at the same level of indentation SHALL end with a period `.` character
+(if any punctuation is used to terminate preceding lines of this list).
+* Standard ASCII characters SHALL be preferred over equivalents from the
+extended Unicode range, such as:
+** an ellipsis character "..." vs. three period characters `...`, or
+** the numerous ways to type a single or double quote, or
+** the use of plain "minus" `-` or double-minus `--` characters over long-dash
+characters, and
+** use of `asciidoc` markup like `(TM)` or `(C)` instead of singular (TM)
+or (C) characters.
+* Guidelines regarding example code blocks with command-line interfaces:
+** It is RECOMMENDED to precede documentation examples of command-line usage
+of Unix shell constructs with the colon+semicolon `:;` as the placeholder
+of interactive shell prompt at start of a line followed by a single space
+character (this allows for easy copying and pasting of multi-line examples
+from documentation into command line, since the sequence would be interpreted
+by most shells as a non-fatal and non-consequetial operation, running or
+short-circuiting the `true` command).
+** For similar reasons it is RECOMMENDED to parametrize the probable variables
+in the example shell code snippets (such as URLs or filenames), especially if
+they are repeated more than once.
+** Likewise, it is RECOMMENDED to organize logical chains (where the subsequent
+command should only be executed if a previous one did not fail) using the `&&`
+shell sequence.
+** If the example command-line is longer than 70 characters, it SHOULD be
+split into multiple lines "concatenated" by trailing backslash as is common
+in shell scripts; continuation lines SHOULD be indented by at least the
+length of the shell prompt placeholder (3 spaces for the `:;` recommended
+prompt and separator that follows).
+** If the command-line example block includes output from the command to be
+entered by the reader, the example command SHOULD be separated by a blank
+line from the sample (or expected) output.
+** If multiple related but separate example code lines follow each other in
+the same example code block, they MAY be presented without blank lines in
+between. However, if there is also sample output, the rule above applies,
+and if the example commands continue after the sample output, it is
+additionally RECOMMENDED to separate the output from next commands by
+two blank lines.
+** If an explanatory (semi-)sentence or paragraph precedes example code, that
+sentence SHOULD end with a colon `:` followed by a blank line (for `asciidoc`
+markup). If the preceding sentence or paragraph is not an introduction into
+the contents of the example, it SHOULD be formatted as a usual paragraph,
+ending with a period `.` character.
+** If the sentence after a source-code example effectively continues the
+sentence interjected by the block with source-code example, that continuation
+line SHOULD start with triple-dots and a lower-case character in the first
+word. For clarity, it is RECOMMENDED to phrase the text in such a manner
+that singular sentences are not "interrupted" by large blocks of example code.
+* Other typographical conventions as applicable to plaintext documents:
+** Line lengths SHOULD NOT exceed 78 characters, and SHOULD NOT vary greatly
+in the middle of a paragraph (the RECOMMENDED line length ranges from 66 to
+76 characters).
+** Long paragraphs broken into several lines SHALL use whole-word wrapping.
+** In-line short ranges of "verbatim" text, such as filenames and keywords,
+SHALL be enclosed in backticks `` (for asciidoc markup, or its equivalent
+for other formats). Verbatim text SHALL NOT be decorated otherwise (italic,
+bold, underline) if the surrounding text in the paragraph is not decorated so.
+** Introduction or other stressing of terminology SHOULD be enclosed in double
+quotes.
+** Sentences separated by a tiree (long-dash) SHALL use a sequence of two
+"minus" characters `--` surrounded by single SPACE characters; if such
+separation happens at end of a line, then the two minuses preceded by a
+SPACE character SHALL be the last characters in the line (no trailing SPACE,
+and no lines starting with a carried-over double-minus).
+** Words joined by a dash, mathematical negative numbers and substrations
+SHALL use a single "minus" `-` character without surrounding whitespace.
+If such separation happens at end of a line, then the "minus" character
+SHALL be the last characters in the line (no trailing SPACE, and no lines
+starting with a carried-over minus).
+
+The same markup recommendation (`asciidoc` or plain-text ASCII preference)
+applies to contents of the blocks of in-code comments in programmatic source
+code files and scripts, which may be parsed out into separate text files
+and rendered or otherwise automatically processed to become man-pages,
+HTML pages for up-to-date website documentation, etc., by default -- unless
+the chosen and agreed tool set to generate documentation from source code
+for the whole project dictates another specific markup (JavaDoc, Doxygen,
+etc. -- and such tool and markup should be consistent for all of the
+project's code in a specific programming language).
+
+Written documentation intended for consumption in non-plaintext markup (e.g.
+converted to PDF or HTML) and proposed changes to such documentation SHOULD
+be inspected in a final processed format by author before committing the pull
+request: it may happen that escape characters, careful line breaks, etc. in
+the source `asciidoc` markup are needed for the final document to be rendered
+properly. It is RECOMMENDED that such final format be also checked with a
+programmatic spell-checker (for example in a desktop word processor program),
+in order to avoid "typos" and later pull requests to fix them.
 
 [[dependencies]]
 Dependencies
 ^^^^^^^^^^^^
 
-The project SHALL depend at least on CZMQ (libczmq), which imports
-ZeroMQ (libzmq), to provide portable APIs around networking, threads,
+The project SHALL depend at least on CZMQ (`libczmq`), which imports
+ZeroMQ (`libzmq`), to provide portable APIs around networking, threads,
 file systems, and other aspects.
+
+The project SHALL depend at least on `asciidoc` to render end-user formats
+of documentation. It MAY depend on use of `xmlto`, `docbook`, `fo`, `a2x`,
+`ghostscript` and other common backends and tools for rendering of specific
+final formats. The project SHALL NOT depend on tools not available freely
+to anybody as required part of its documentation processing recipes (e.g.
+as a component of the `make distcheck` recipe chain).
 
 [[project-header-files]]
 Project Header Files
@@ -238,13 +432,13 @@ Project Header Files
 The project SHALL provide two services via header files:
 
 1.  A set of internal definitions to class source files, which a class
-source file can access with a single include statement.
+source file can access with a single `#include` statement.
 2.  A public API that calling applications can access with a single
-include statement.
+`include` statement.
 
 These two services MAY be combined into one project header file
-((myproject.h), or MAY be split into an public header file
-(include/myproject.h) and an internal header file (src/myp_classes.h).
+(`myproject.h`), or MAY be split into an public header file
+(`include/myproject.h`) and an internal header file (`src/myp_classes.h`).
 The project MAY further break down these header files if necessary.
 
 The public header file SHALL define a version number for the project as
@@ -277,34 +471,44 @@ files, like this:
 
 Definitions in the public header file are visible to calling
 applications as well as class source code. The public header file SHALL
-#include all class header files that form part of the public API for the
+`#include` all class header files that form part of the public API for the
 project.
 
 Definitions in the internal header file are visible only to class source
 code. The internal header file, if present, SHALL include the public
 header file, all class header files, and all system and library header
 files needed by the project. The primary goal here is to keep delicate
-system-dependent #include chains in a single place, and away from class
+system-dependent `#include` chains in a single place, and away from class
 source code.
 
 [[template-readme-file]]
 Template README File
 ^^^^^^^^^^^^^^^^^^^^
 
+NOTE: A copy of the sample below is committed into the repository as
+`README-CLASS-template.asciidoc`.
+
 ----------------------------------------------------------------------------------------
-1. Project Title
+Project Title
+=============
+Maintainter Name <user@domain.org>
 
-<One-paragraph statement of the goals of the project, and the problems it aims to solve>
+== Project Title
 
-## References
+<One-paragraph statement of the goals of the project, and the problems
+it aims to solve>.
 
-* Contribution policy is defined by C4 (http://rfc.zeromq.org/spec:21).
-* Project style guide is defined by CLASS (http://rfc.zeromq.org/spec:14).
- * short name: <shortname>
- * prefix: <prefix>
+== References
+
+* Contribution policy is defined by C4 (http://rfc.zeromq.org/spec:42).
+* Project style guide is defined by CLASS (http://rfc.zeromq.org/spec:21).
+** short name: <shortname>
+** prefix: <prefix>
 * Licensed under <license name>, see COPYING
 * Language level: C99
 ----------------------------------------------------------------------------------------
+
+NOTE: Update links to C4 and CLASS version adhered to by the project.
 
 [[language-level]]
 Language Level
@@ -315,8 +519,8 @@ the C89 language for compatibility with older platforms. The language
 level SHALL be noted in the project README and all source code SHALL
 conform to it.
 
-NOTE: Microsoft Visual C/C++ does _not_ support C99 and projects must
-build using C++ language extensions to get access to C99 syntax. Because
+NOTE: Microsoft Visual C/C\++ does _not_ support C99 and projects must
+build using C\++ language extensions to get access to C99 syntax. Because
 of this, projects SHOULD NOT use any C99 syntax that is not a strict
 subset of C++.
 
@@ -355,15 +559,15 @@ File Organization
 
 Each class SHALL be written as two files:
 
-* A header file: include/myp_myclass.h
-* A source file: src/myp_myclass.c
+* A header file: `include/myp_myclass.h`
+* A source file: `src/myp_myclass.c`
 
 These two files SHALL be the original documentation for the class.
 Specifically, the class header SHALL define the API for the class, and
 the class source file SHALL define the implementation of each method.
 
 Class names SHALL follow the General Style for Naming. We will use
-myclass in examples.
+`myclass` in examples.
 
 Every source and header file SHALL start with an appropriate file header
 that states at least:
@@ -402,21 +606,21 @@ on data provided by the caller or system.
 
 A stateful class SHALL provide these methods:
 
-* A constructor method myp_myclass_new ()
-* A destructor method myp_myclass_destroy ()
-* A self-test method myp_myclass_test ()
+* A constructor method `myp_myclass_new ()`
+* A destructor method `myp_myclass_destroy ()`
+* A self-test method `myp_myclass_test ()`
 
 A stateful class MAY provide these methods, and SHALL use these names
 when providing such functionality:
 
-* A duplicator method myp_myclass_dup ()
-* A set of list navigation methods myp_myclass_first () and
-myp_myclass_next ().
-* Print methods myp_myclass_print () and myp_myclass_fprint ().
+* A duplicator method `myp_myclass_dup ()`
+* A set of list navigation methods `myp_myclass_first ()` and
+`myp_myclass_next ()`.
+* Print methods `myp_myclass_print ()` and `myp_myclass_fprint ()`.
 
 A stateless class SHALL provide at least this method:
 
-* A self-test method myp_myclass_test ()
+* A self-test method `myp_myclass_test ()`.
 
 [[method-names]]
 Method Names
@@ -435,7 +639,7 @@ Class Header File
 The class header file SHALL have this layout:
 
 * The file header
-* An outer #ifndef that makes it safe to include the header file
+* An outer `#ifndef` that makes it safe to include the header file
 multiple times
 * Calling conventions for C++
 * A forward reference to the class type, for stateful classes
@@ -495,7 +699,7 @@ int
 #endif
 ------------------------------------
 
-All public methods SHALL be declared with CZMQ_EXPORT in the class
+All public methods SHALL be declared with `CZMQ_EXPORT` in the class
 header file so that these methods are properly exported on operating
 systems that require it.
 
@@ -531,7 +735,7 @@ struct _myclass_t {
 
 Property names SHALL follow the General Style for Naming. Property names
 SHOULD be nouns or adjectives (typically used for Boolean properties).
-We will use myprop in examples.
+We will use `myprop` in examples.
 
 [[method-styles]]
 Method Styles
@@ -551,13 +755,13 @@ Argument names SHALL be consistent with property names.
 Return Values
 +++++++++++++
 
-Success/failure SHALL be indicated by returning an int, with values zero
-or -1 respectively.
+Success/failure SHALL be indicated by returning an `int`, with values
+`0` or `-1` respectively.
 
-Strings SHALL be returned as "char *" when they are passed to the
+Strings SHALL be returned as `char *` when they are passed to the
 caller, who must free them.
 
-Strings SHALL be returned as "const char *" when the caller may not
+Strings SHALL be returned as `const char *` when the caller may not
 modify or free them.
 
 Compound return values, e.g. a size-specified buffer, SHOULD be returned
@@ -569,7 +773,7 @@ return code.
 The Self Test Method
 ^^^^^^^^^^^^^^^^^^^^
 
-In stateless classes, the only standard method is myp_myclass_test (),
+In stateless classes, the only standard method is `myp_myclass_test ()`,
 which SHALL conduct a self test of the class, returning silently on
 success, and asserting on failure.
 
@@ -650,11 +854,11 @@ myp_myclass_destroy (myp_myclass_t **self_p)
 }
 -------------------------------------------------
 
-* The destructor SHALL nullify the provided instance reference.
-* The destructor SHALL be idempotent, i.e., can be called safely on the
+* The destructor SHALL `null`-ify the provided instance reference.
+* The destructor SHALL be idempotent, i.e. it can be called safely on the
 same instance reference more than once.
 * The destructor SHALL safely free properties and child class instances
-that are not null.
+that are not `null`.
 
 [[the-duplicator-method]]
 The Duplicator Method
@@ -662,7 +866,7 @@ The Duplicator Method
 
 The class MAY offer a duplicator method which creates a full copy of an
 instance; if it offers such semantics, the method MUST be called
-myp_myclass_dup () and take this general form:
+`myp_myclass_dup ()` and take this general form:
 
 ----------------------------------------------------
 //  Create a copy of a myp_myclass instance
@@ -683,10 +887,10 @@ myp_myclass_dup (myp_myclass_t *self)
 }
 ----------------------------------------------------
 
-* The duplicator SHALL return either a new instance reference, or null,
+* The duplicator SHALL return either a new instance reference, or `null`
 if construction failed, in the same manner as the constructor.
-* The duplicator SHALL accept a null instance reference, and then return
-null.
+* The duplicator SHALL accept a `null` instance reference, and then return
+`null`.
 * A duplicated instance SHALL be entirely independent of the original
 instance (i.e. all properties SHALL also be duplicated).
 
@@ -722,23 +926,23 @@ myp_myclass_next (myp_myclass_t *self)
 }
 -------------------------------------------------------------------
 
-* The navigation methods SHALL return null to indicate "no more items".
+* The navigation methods SHALL return `null` to indicate "no more items".
 * The navigation methods SHALL be idempotent, and specifically, calling
-myp_myclass_next () when at the end of the list SHALL return null each
+`myp_myclass_next ()` when at the end of the list SHALL return null each
 time.
-* The class MAY offer myp_myclass_last () and myp_myclass_prev ()
+* The class MAY offer `myp_myclass_last ()` and `myp_myclass_prev ()`
 methods.
-* The class MAY offer myp_myclass_size () which returns the list size.
+* The class MAY offer `myp_myclass_size ()` which returns the list size.
 * If the class offers methods to create list items, these SHALL be
-called myp_myclass_append () (to add to the end of the list) and
-myp_myclass_insert () (to add to the start of the list).
+called `myp_myclass_append ()` (to add to the end of the list) and
+`myp_myclass_insert ()` (to add to the start of the list).
 * If the class offers a method to remove a list item, this SHALL be
-called myp_myclass_delete (); it SHALL take the item reference as
+called `myp_myclass_delete ()`; it SHALL take the item reference as
 argument, and it SHALL delete the first matching item in the list, if
 any.
 * If the class maintains multiple lists, it SHALL create unique method
 names for each list by adding a list name, e.g.,
-myp_myclass_myitem_first ().
+`myp_myclass_myitem_first ()`.
 
 [[accessor-methods]]
 Accessor Methods
@@ -783,7 +987,7 @@ Formatted String Arguments
 
 When a method (such as an accessor method) accepts a string argument as
 primary argument, it SHOULD use a variable argument list and perform
-vsnprintf formatting on that string argument.
+`vsnprintf` formatting on that string argument.
 
 [[general-methods]]
 General Methods
@@ -833,7 +1037,7 @@ Heap Use
 
 One of the goals of CLASS is to hide heap use as far as possible within
 classes. Application programs SHOULD use the heap only through
-constructors and duplicators (including the library strdup () function).
+constructors and duplicators (including the library `strdup ()` function).
 Class methods MAY use the heap with care, but follow these rules:
 
 * When a class instance has been destroyed, all heap memory it used MUST
@@ -841,10 +1045,10 @@ be freed. Classes SHALL NOT leak memory under any conditions except
 during abnormal termination (e.g., on a failed assertion).
 * Non-atomic properties SHOULD be re-allocated (i.e., freed and
 allocated) in accessor functions that modify them, as needed.
-* The instance structure MAY use char arrays instead of heap allocated
-char pointers.
+* The instance structure MAY use `char[]` arrays instead of heap allocated
+`char*` pointers.
 * When freeing a non-atomic property outside the destructor, a method
-MUST set the property to null if it does not allocate a new value
+MUST set the property to `null` if it does not allocate a new value
 immediately.
 
 [[static-variables]]
@@ -864,8 +1068,8 @@ stack variables SHALL be used in place of static variables.
 Static Functions
 ^^^^^^^^^^^^^^^^
 
-Functions that are not exported by a class are defined as static and
-named s_functionname () with no use of the project prefix or class name.
+Functions that are not exported by a class are defined as `static` and
+named `s_functionname ()` with no use of the project prefix or class name.
 
 Static functions MAY be defined before first use, or MAY be prototyped
 and defined immediately after first use.
@@ -918,7 +1122,7 @@ initialized at the start of the function or method where they are used.
 
 * Variables and functions SHALL use lower-case names.
 * Where necessary, underlines SHALL be used to separate parts of a name.
-* Variable names like i and temp that carry no information SHALL NOT be
+* Variable names like `i` and `temp` that carry no information SHALL NOT be
 used.
 
 [[statements]]
@@ -937,12 +1141,12 @@ if (comma == NULL)
     comma = surname;
 --------------------
 
-In else statements, the else SHALL be put on a line by itself.
+In `else` statements, the `else` SHALL be put on a line by itself.
 
-Multiple if/else tests SHALL be stacked vertically to indicate that the
-order is arbitrary.
+Multiple `if`/`else` tests SHALL be stacked vertically to indicate that
+the order is arbitrary.
 
-This is the form of a stacked if statement block:
+This is the form of a stacked `if` statement block:
 
 ---------------------------
 if (command == CMD_HELLO)
@@ -958,7 +1162,7 @@ if (command == CMD_ERROR)
 With multi-statement conditional blocks, the closing bracket SHALL be
 put on a line by itself, aligned with the opening keyword.
 
-This is the form of a stacked if statement block with brackets around
+This is the form of a stacked `if` statement block with brackets around
 each conditional block:
 
 ------------------------------------------
@@ -978,7 +1182,7 @@ if (command == CMD_ERROR) {
 }
 ------------------------------------------
 
-This is the form of a while statement:
+This is the form of a `while` statement:
 
 ------------------------------------
 char *comma = strchr (surname, ',');
@@ -996,15 +1200,15 @@ Comments on code SHALL be used lightly and where necessary.
 
 In C99 projects the syntax for comments is:
 
-* In-line comments SHALL use the C++ // style.
-* Multi-line comments MAY use the C /* ... */ style or MAY use the C++
-style.
+* In-line comments SHALL use the C++ `//` style.
+* Multi-line comments MAY use the C `/* ... */` style or MAY use the C++
+`//` style.
 
-In C89 projects the syntax for all comments SHALL be the C /* ... */
+In C89 projects the syntax for all comments SHALL be the C `/* ... */`
 style.
 
 * When possible in-line comments shall start at column 33.
-* In in-line comments, the // or /* shall be followed by two spaces.
+* In in-line comments, the `//` or `/*` shall be followed by two spaces.
 * Every function shall have a multi-line comment header that briefly
 explains its purpose.
 * Method comment headers SHALL be preceded by a line of hyphens ending
@@ -1027,7 +1231,7 @@ myp_myclass_first (myp_myclass_t *self)
 * Every property in a class structure SHALL have a 1-line in-line
 comment that describes its purpose.
 * Comments SHALL NOT be used to compensate for illegible code.
-* Code that cannot be reasonable read and understood by the casual
+* Code that cannot be reasonably read and understood by the casual
 reader SHOULD be rewritten, not annotated.
 * Properties and functions whose semantics are not clear from their
 names SHOULD be renamed, not annotated.
@@ -1043,11 +1247,11 @@ readability, in these cases:
 header for a function.
 * To break up blocks of code that exceed 6-8 lines.
 * After assertions at the start of a class body.
-* After an if statement with a single-statement block.
-* After multi-line case blocks inside a switch statement.
+* After an `if` statement with a single-statement block.
+* After multi-line `case` blocks inside a `switch` statement.
 * After multi-line comment blocks.
 
-Blank lines SHALL not be used in these cases:
+Blank lines SHALL NOT be used in these cases:
 
 * After the closing bracket of a conditional block.
 * To separate individual lines of code that could better be grouped
@@ -1117,7 +1321,7 @@ comma = name [char_nbr];
 ------------------------
 
 This is the style for pointer dereferences, with no space before or
-after the '->':
+after the `->`:
 
 ---------------------------
 self->name = strdup (name);
@@ -1150,22 +1354,22 @@ be removed by an optimizing compiler.
 Exiting Functions and Goto Statements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The return statement MAY be used at any point in a function to return to
-the caller.
+The `return` statement MAY be used at any point in a function to return
+to the caller.
 
-If the function needs to do clean-up (e.g., free a number of
-properties), the code MAY use goto and a single clean-up block at the
+If the function needs to do clean-up (e.g. to free a number of
+properties), the code MAY use `goto` and a single clean-up block at the
 end of the function. Such a clean-up block SHALL follow the last
-"normal" return.
+"normal" `return`.
 
-A void function SHALL NOT end in an empty return statement.
+A `void` function SHALL NOT end in an empty `return` statement.
 
 [[recommended-patterns]]
 Recommended Patterns
 ^^^^^^^^^^^^^^^^^^^^
 
 * The recommended pattern for an open-ended loop is `while (true) {}`,
-with break statements as needed to exit the loop.
+with `break` statements as needed to exit the loop.
 * The recommended pattern for array iteration is:
 
 ----------------------------------------------------------------
@@ -1192,8 +1396,8 @@ Portability
 Portable Versus Native Classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All projects SHALL depend at least on ZeroMQ (libzmq) and CZMQ
-(libczmq), which provide portable APIs around networking, threads, file
+All projects SHALL depend at least on ZeroMQ (`libzmq`) and CZMQ
+(`libczmq`), which provide portable APIs around networking, threads, file
 systems, and other aspects.
 
 * A class SHALL be either "portable" or "native".
@@ -1203,8 +1407,8 @@ on different systems.
 system differences, and SHALL use the preprocessor to compile
 differently on different systems.
 * A native class SHALL use the preprocessor macros defined in
-czmq_prelude.h, and specifically the *WINDOWS*, *UNIX*, and __UTYPE_ABC
-macros.
+`czmq_prelude.h`, and specifically the *`WINDOWS`*, *`UNIX`*, and
+`__UTYPE_ABC` macros.
 * A native class SHALL NOT use preprocessor macros supplied by any
 specific build system. If the CZMQ-supplied macros are not sufficient
 these can be improved and extended.
@@ -1231,16 +1435,16 @@ Portable Language
 The following types and macros are defined by CZMQ and may be used
 safely in all code:
 
-* bool, true, false: Boolean data type and constants.
-* byte, dbyte, qbyte: unsigned 1-, 2-, and 4-octet integers.
-* uint, ulong: unsigned integers and longs.
-* int32_t, int64_t: signed 32-bit and 64-bit integers.
-* uint32_t, uint64_t: unsigned 32-bit and 64-bit integers.
-* streq (s1, s2): preferred over strcmp (s1, s2) == 0.
-* strneq (s1, s2): preferred over strcmp (s1, s2) != 0.
-* randof (number): return random integer in range 0 .. number - 1.
-* srandom: typically used like this: srandom ((unsigned) time (NULL));
-* inline, snprintf, vsnprintf: Windows uses non-POSIX variants with
+* `bool`, `true`, `false`: Boolean data type and constants.
+* `byte`, `dbyte`, `qbyte`: unsigned 1-, 2-, and 4-octet integers.
+* `uint`, `ulong`: unsigned integers and longs.
+* `int32_t`, `int64_t`: signed 32-bit and 64-bit integers.
+* `uint32_t`, `uint64_t`: unsigned 32-bit and 64-bit integers.
+* `streq (s1, s2)`: preferred over `strcmp (s1, s2) == 0`.
+* `strneq (s1, s2)`: preferred over `strcmp (s1, s2) != 0`.
+* `randof (number)`: return random integer in range `0` .. `number - 1`.
+* `srandom`: typically used like this: `srandom ((unsigned) time (NULL));`
+* `inline`, `snprintf`, `vsnprintf`: Windows uses non-POSIX variants with
 underscores.
 
 [[compiler-warnings]]
@@ -1252,9 +1456,9 @@ list of constructs known to cause warnings on some but not all
 compilers:
 
 * Assigning a void pointer to a typed pointer without a cast. Always
-cast a void * before assigning it to a typed pointer.
+cast a `void *` before assigning it to a typed pointer.
 * Failing to return a value in a non-void function. Always end a
-non-void function with a return statement.
+non-void function with a `return` statement.
 
 [[code-generation]]
 Code Generation
@@ -1264,14 +1468,14 @@ Code generation MAY be used to produce classes mechanically when there
 is compelling benefit.
 
 * The code generator SHOULD be GSL, from https://github.com/imatix/gsl.
-* All code generation scripts SHALL be in the project src subdirectory.
-* All model data (XML files) SHALL be in the project src directory.
+* All code generation scripts SHALL be in the project `src` subdirectory.
+* All model data (XML files) SHALL be in the project `src` directory.
 * If only parts of a class are generated, these parts SHALL have the
-extension .inc and SHALL be generated into the project src directory,
-and SHALL be included in the class source file using an #include
+extension `.inc` and SHALL be generated into the project `src` directory,
+and SHALL be included in the class source file using an `#include`
 statement.
-* Code generation SHALL be done as a manual step. For example, "make
-code." All generated code SHALL be committed into the project as for
+* Code generation SHALL be done as a manual step. For example, `make
+code`. All generated code SHALL be committed into the project as for
 hand-written files.
 * Code generation SHALL be fully idempotent, that is, generated code
 SHALL NOT contain any date or time stamps.
@@ -1280,7 +1484,7 @@ that creates significant barriers to readers. A good rule of thumb is
 that for code generation to be profitable, it should reduce the lines of
 code written by hand by 80-90%.
 * Generated code SHALL contain a warning of this form at the start:
-"GENERATED SOURCE CODE, DO NOT EDIT".
+`GENERATED SOURCE CODE, DO NOT EDIT`.
 * Generated code SHALL otherwise conform to this Specification so that
 it is indistinguishable from hand-written code.
 
@@ -1303,14 +1507,14 @@ thus not thread safe.
 "hand-off" cases.
 * Code SHOULD NOT use mutexes, locks, or other mechanisms to share state
 between threads.
-* Code MUST NOT use non-thread safe system calls such as basename ().
+* Code MUST NOT use non-thread safe system calls such as `basename ()`.
 
 [[buffer-overflows]]
 Buffer Overflows
 ^^^^^^^^^^^^^^^^
 
 * Code MUST always truncate over-long data.
-* Code MUST NOT use unsafe system calls such as gets ().
+* Code MUST NOT use unsafe system calls such as `gets ()`.
 
 [[known-weaknesses]]
 Known Weaknesses
