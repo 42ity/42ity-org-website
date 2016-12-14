@@ -23,6 +23,7 @@ SHOULD deliver;
 * revised "verbatim" markup in-lined in the text, and fixed a few typos;
 * requirement by default of `asciidoc` compatible markup for text files
 and source comments, unless a different markup is not easily avoidable;
+* the template README file markup made compatible with `asciidoc`.
 
 [[license]]
 License
