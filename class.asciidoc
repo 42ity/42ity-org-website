@@ -475,20 +475,30 @@ source code.
 Template README File
 ^^^^^^^^^^^^^^^^^^^^
 
+NOTE: A copy of the sample below is committed into the repository as
+`README-CLASS-template.asciidoc`.
+
 ----------------------------------------------------------------------------------------
-1. Project Title
+Project Title
+=============
+Maintainter Name <user@domain.org>
 
-<One-paragraph statement of the goals of the project, and the problems it aims to solve>
+== Project Title
 
-## References
+<One-paragraph statement of the goals of the project, and the problems
+it aims to solve>.
 
-* Contribution policy is defined by C4 (http://rfc.zeromq.org/spec:21).
-* Project style guide is defined by CLASS (http://rfc.zeromq.org/spec:14).
- * short name: <shortname>
- * prefix: <prefix>
+== References
+
+* Contribution policy is defined by C4 (http://rfc.zeromq.org/spec:42).
+* Project style guide is defined by CLASS (http://rfc.zeromq.org/spec:21).
+** short name: <shortname>
+** prefix: <prefix>
 * Licensed under <license name>, see COPYING
 * Language level: C99
 ----------------------------------------------------------------------------------------
+
+NOTE: Update links to C4 and CLASS version adhered to by the project.
 
 [[language-level]]
 Language Level
