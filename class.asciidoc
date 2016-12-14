@@ -315,8 +315,8 @@ the C89 language for compatibility with older platforms. The language
 level SHALL be noted in the project README and all source code SHALL
 conform to it.
 
-NOTE: Microsoft Visual C/C++ does _not_ support C99 and projects must
-build using C++ language extensions to get access to C99 syntax. Because
+NOTE: Microsoft Visual C/C\++ does _not_ support C99 and projects must
+build using C\++ language extensions to get access to C99 syntax. Because
 of this, projects SHOULD NOT use any C99 syntax that is not a strict
 subset of C++.
 
