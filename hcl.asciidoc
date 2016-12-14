@@ -12,7 +12,7 @@ dashboard, IPM Infrastructure allows IT professionals to understand and monitor
 data center power, environmental and physical capacity metrics, all within the
 context of their IT infrastructure.
 
-With all the flexibility of the 42ITy™ Open Source data center monitoring
+With all the flexibility of the 42ITy(TM) Open Source data center monitoring
 software stack, 
 link:http://www.eaton.eu/ipminfrastructure[Eaton IPM Infrastructure] simplifies
 complexity – so you can focus on what really matters.

@@ -2,14 +2,14 @@
 
 == Our mission
 
-The 42ITY™ project exists to provide the most open, flexible platform in the
+The 42ITY(TM) project exists to provide the most open, flexible platform in the
 industry for enabling data center service optimization.
 
 Proprietary, monolithic solutions for data center infrastructure management have
 often failed to provide the expected customer value because they are too costly
 to integrate & deploy in heterogeneous data center environments.
 
-42ITy™ addresses these issues by providing an intuitive data center monitoring
+42ITy(TM) addresses these issues by providing an intuitive data center monitoring
 platform based on a modern micro-services architecture with open REST APIs,
 facilitating integration with existing solutions. And best of all, it is open
 source! This enables data center operators and data center ecosystem solution
@@ -19,5 +19,5 @@ heterogeneous environments via a common framework and APIs.
 
 == Recent Updates
 
-- October 5th, 2016: Initial announcement of 42ITy™ availability.
+- October 5th, 2016: Initial announcement of 42ITy(TM) availability.
 - October 5th, 2016: Initial announcement of link:http://www.eaton.eu/ipminfrastructure[Eaton Intelligent Power Management Infrastructure and Intelligent Power Controller] availability.
