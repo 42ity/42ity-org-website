@@ -17,6 +17,9 @@ and is available as a ZeroMQ RFC
 This version of CLASS amends the original linked above in a few points:
 
 * clarification of ZeroMQ vs. IETF "RFC"s;
+* added Unix shared libraries, pkg-config declarations, and service
+management definitions for daemons to the list of things that a project
+SHOULD deliver;
 * revised "verbatim" markup in-lined in the text, and fixed a few typos.
 
 [[license]]
