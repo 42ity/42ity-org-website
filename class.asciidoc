@@ -416,6 +416,13 @@ The project SHALL depend at least on CZMQ (`libczmq`), which imports
 ZeroMQ (`libzmq`), to provide portable APIs around networking, threads,
 file systems, and other aspects.
 
+The project SHALL depend at least on `asciidoc` to render end-user formats
+of documentation. It MAY depend on use of `xmlto`, `docbook`, `fo`, `a2x`,
+`ghostscript` and other common backends and tools for rendering of specific
+final formats. The project SHALL NOT depend on tools not available freely
+to anybody as required part of its documentation processing recipes (e.g.
+as a component of the `make distcheck` recipe chain).
+
 [[project-header-files]]
 Project Header Files
 ^^^^^^^^^^^^^^^^^^^^
