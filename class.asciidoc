@@ -14,6 +14,11 @@ CLASS was created by Pieter Hintjens, originally for the ZeroMQ project,
 and is available as a ZeroMQ RFC
 (link:https://rfc.zeromq.org/spec:21/CLASS/[CLASS (C Language Style for Scalability)] ).
 
+This version of CLASS amends the original linked above in a few points:
+
+* clarification of ZeroMQ vs. IETF "RFC"s;
+* revised "verbatim" markup in-lined in the text, and fixed a few typos.
+
 [[license]]
 License
 ~~~~~~~
