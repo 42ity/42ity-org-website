@@ -20,7 +20,9 @@ This version of CLASS amends the original linked above in a few points:
 * added Unix shared libraries, pkg-config declarations, and service
 management definitions for daemons to the list of things that a project
 SHOULD deliver;
-* revised "verbatim" markup in-lined in the text, and fixed a few typos.
+* revised "verbatim" markup in-lined in the text, and fixed a few typos;
+* requirement by default of `asciidoc` compatible markup for text files
+and source comments, unless a different markup is not easily avoidable;
 
 [[license]]
 License
