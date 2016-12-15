@@ -1,9 +1,7 @@
 Documentation Recommendation
 ============================
 
-== Documentation Sources
-
-The following guidelines apply to text provided as part of project sources
+The following recommendations apply to text provided as part of project sources
 (including the `README`, `AUTHORS` and `LICENSE` files mandated in
 link:class.html[CLASS (C Language Style for Scalability)]):
 
