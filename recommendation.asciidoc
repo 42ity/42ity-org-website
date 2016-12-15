@@ -4,7 +4,8 @@ Documentation Recommendation
 == Documentation Sources
 
 The following guidelines apply to text provided as part of project sources
-(including the `README`, `AUTHORS` and `LICENSE` files mandated above):
+(including the `README`, `AUTHORS` and `LICENSE` files mandated in
+link:class.html[CLASS (C Language Style for Scalability)]):
 
 * Guidelines regarding plaintext markup formats:
 ** Documentation provided and maintained as part of the project SHALL NOT

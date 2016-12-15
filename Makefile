@@ -11,7 +11,8 @@ HTML_SOURCES = 	\
 	about.asciidoc \
 	contact.asciidoc \
 	c4.asciidoc \
-	class.asciidoc
+	class.asciidoc \
+	recommendation.asciidoc
 
 HTML_GEN_FILES = $(HTML_SOURCES:.asciidoc=.html)
 
