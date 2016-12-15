@@ -24,13 +24,16 @@ contributions.
 Please read this document if you are unfamiliar with it.
 
 
-== Coding style guide
+== Coding and documentation style guides
 
-The project 42ITy(TM) uses the
-link:class.html[CLASS (C Language Style for Scalability)]
-guide for code style. 
+The project 42ITy(TM) uses:
 
-Please read this document if you are unfamiliar with it. 
+* the link:class.html[CLASS (C Language Style for Scalability)] guide for code
+style. 
+* the link:recommendation.html[Documentation Recommendation] for documentation
+style.
+
+Please read these documents if you are unfamiliar with it.
 
 
 == Developer Certification of Origin (DCO)
