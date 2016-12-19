@@ -5,7 +5,17 @@ Documentation Recommendation
 
 The following recommendations apply to text provided as part of project sources
 (including the `README`, `AUTHORS` and `LICENSE` files mandated in
-link:class.html[CLASS (C Language Style for Scalability)]):
+link:class.html[CLASS (C Language Style for Scalability)] and in-line comments
+which may be parsed into text files and further into generated documentation)
+in order to facilitate a common style of original readable textual content,
+and to minimize the amount of tools needed to re-process it into different
+end-user formats.
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in IETF RFC 2119 (see
+"http://tools.ietf.org/html/rfc2119[Key words for use in RFCs to
+Indicate Requirement Levels]").
 
 * Guidelines regarding plaintext markup formats:
 ** Documentation provided and maintained as part of the project SHALL NOT
@@ -15,7 +25,7 @@ SVG for vector graphics. Project SHOULD consider that the build farm hosts
 MAY not have installed the graphical environment and desktop/GUI document
 processing software, so optional generation of documentation in formats
 comfortable for end-user consumption SHOULD rely on common processing
-tools outlined in the <<dependencies,"Dependencies">> section.
+tools outlined in the <<dependencies,"Dependencies">> section of CLASS.
 ** Committed text and documentation files SHOULD use `asciidoc` markup if
 they are structured (including sources for "man" pages, project standards
 and contracts, user or developer instructions, etc.)
@@ -161,10 +171,10 @@ etc. -- and such tool and markup should be consistent for all of the
 project's code in a specific programming language).
 
 Written documentation intended for consumption in non-plaintext markup (e.g.
-converted to PDF or HTML) and proposed changes to such documentation SHOULD
-be inspected in a final processed format by author before committing the pull
-request: it may happen that escape characters, careful line breaks, etc. in
-the source `asciidoc` markup are needed for the final document to be rendered
-properly. It is RECOMMENDED that such final format be also checked with a
-programmatic spell-checker (for example in a desktop word processor program),
-in order to avoid "typos" and later pull requests to fix them.
+converted to PDF, MAN or HTML pages) and proposed changes to such documentation
+SHOULD be inspected in a final processed format by author before committing the
+pull request: it may happen that escape characters, careful line breaks, etc.
+in the source markup are needed for the final document to be rendered properly.
+It is RECOMMENDED that such final format be also checked with a programmatic
+spell-checker (for example in a desktop word processor program), in order to
+avoid "typos" and subsequent pull requests to fix them.
