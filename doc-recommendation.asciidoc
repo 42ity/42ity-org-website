@@ -1,6 +1,8 @@
 Documentation Recommendation
 ============================
 
+== Documentation style and format recommendation for the project
+
 The following recommendations apply to text provided as part of project sources
 (including the `README`, `AUTHORS` and `LICENSE` files mandated in
 link:class.html[CLASS (C Language Style for Scalability)]):
@@ -166,5 +168,3 @@ the source `asciidoc` markup are needed for the final document to be rendered
 properly. It is RECOMMENDED that such final format be also checked with a
 programmatic spell-checker (for example in a desktop word processor program),
 in order to avoid "typos" and later pull requests to fix them.
-
-
