@@ -84,12 +84,12 @@ list at the same level of indentation SHALL end with a period `.` character
 (if any punctuation is used to terminate preceding lines of this list).
 * Standard ASCII characters SHALL be preferred over equivalents from the
 extended Unicode range, such as:
-** an ellipsis character "..." vs. three period characters `...`, or
+** three period characters `...` over an an ellipsis character "...", or
 ** the numerous ways to type a single or double quote, or
-** the use of plain "minus" `-` or double-minus `--` characters over long-dash
-characters, and
-** use of `asciidoc` markup like `(TM)` or `(C)` instead of singular (TM)
-or (C) characters.
+** the use of plain "minus" `-` or double-minus `--` characters over different
+long-dash characters, and
+** use of `asciidoc` (or equivalent) plaintext markup like `(TM)` or `(C)`
+instead of singular characters like (TM) or (C).
 * Guidelines regarding example code blocks with command-line interfaces:
 ** It is RECOMMENDED to precede documentation examples of command-line usage
 of Unix shell constructs with the colon+semicolon `:;` as the placeholder
