@@ -29,11 +29,11 @@ Please read this document if you are unfamiliar with it.
 The project 42ITy(TM) uses:
 
 * the link:class.html[CLASS (C Language Style for Scalability)] guide for code
-style. 
-* the link:recommendation.html[Documentation Recommendation] for documentation
 style.
+* the link:doc-recommendation.html[Documentation Recommendation] for
+documentation style.
 
-Please read these documents if you are unfamiliar with it.
+Please read these documents if you are unfamiliar with them.
 
 
 == Developer Certification of Origin (DCO)

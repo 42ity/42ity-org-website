@@ -12,7 +12,7 @@ HTML_SOURCES = 	\
 	contact.asciidoc \
 	c4.asciidoc \
 	class.asciidoc \
-	recommendation.asciidoc
+	doc-recommendation.asciidoc
 
 HTML_GEN_FILES = $(HTML_SOURCES:.asciidoc=.html)
 
