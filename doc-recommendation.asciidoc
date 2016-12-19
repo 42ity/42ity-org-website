@@ -106,8 +106,8 @@ of Unix shell constructs with the colon+semicolon `:;` as the placeholder
 of interactive shell prompt at start of a line followed by a single space
 character (this allows for easy copying and pasting of multi-line examples
 from documentation into command line, since the sequence would be interpreted
-by most shells as a non-fatal and non-consequetial operation, running or
-short-circuiting the `true` command).
+by most shells as a non-fatal and non-consequential operation, running or
+short-circuiting the `true` command in place of the colon `:` character).
 ** For similar reasons it is RECOMMENDED to parametrize the probable variables
 in the example shell code snippets (such as URLs or filenames), especially if
 they are repeated more than once.
