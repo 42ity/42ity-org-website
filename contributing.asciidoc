@@ -2,7 +2,7 @@
 
 == 42ITy Contributor guide
 
-There are many ways you can help make 42ITY(TM) better!
+There are many ways you can help make 42ITy(TM) better!
 
 This guide will help answer common questions you may have during your first and
 further contribution.
