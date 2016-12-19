@@ -22,7 +22,10 @@ management definitions for daemons to the list of things that a project
 SHOULD deliver;
 * revised "verbatim" markup in-lined in the text, and fixed a few typos;
 * requirement by default of `asciidoc` compatible markup for text files
-and source comments, unless a different markup is not easily avoidable;
+and source comments, unless a different markup is not easily avoidable
+(this and other aspects of documentation style, format and tooling were
+since relocated into a separate document:
+link:doc-recommendation.html[Documentation Recommendation]);
 * added standard text-processing programs among "dependencies" for the
 projects which aim to deliver rendered end-user documentation formats;
 * the template README file markup made compatible with `asciidoc`.
