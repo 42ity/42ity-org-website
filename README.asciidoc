@@ -1,10 +1,10 @@
 == Introduction
 
-These are the source pages of link:http://42ity.org[42ITy website], in
+These are the source pages of link:http://42ity.org[42ITy(TM) website], in
 link:http://asciidoc.org[Asciidoc] format.
 
 These are used for generating the static HTML content of
-link:http://42ity.org[42ITy website].
+link:http://42ity.org[42ITy(TM) website].
 
 A modified version of
 link:https://github.com/llaville/asciidoc-bootstrap-backend[Asciidoc Bootstrap]
@@ -52,8 +52,8 @@ From the root of the 42ity-org-website directory, simply call:
 
 This will build all the HTML files needed for the website.
 
-If you are a maintainer of the 42ITy website, you will also want to publish your
-modifications. To do so, call:
+If you are a maintainer of the 42ITy(TM) website, you will also want to publish
+your modifications. To do so, call:
 
 ----
 :; make install
