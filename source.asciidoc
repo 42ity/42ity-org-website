@@ -2,4 +2,5 @@
 
 == Source code
 
-Source code will soon be available on link:http://github.com/42ity[42ITy] GitHub page. Stay tuned...
+Source code of the various 42ITy(TM) sub-projects is available on
+link:http://github.com/42ity[42ITy] GitHub page.
