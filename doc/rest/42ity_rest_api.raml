@@ -696,7 +696,7 @@ types:
     type: string
     example: internal.input.voltage.1phase.ups
 
-  Rule_Descritption:
+  Rule_Description:
     description: |
       Detailed description of the rule given by the user.
     type: string
@@ -762,7 +762,7 @@ types:
           rule_hierarchy:
             type: Rule_Hierarchy
           rule_desc:
-            type: Rule_Descritption
+            type: Rule_Description
           target:
             description: |
               Internal information. Every item consists of the name of the metric under consideration and name of the observed asset – separated by "@".
@@ -803,7 +803,7 @@ types:
           rule_hierarchy:
             type: Rule_Hierarchy
           rule_desc:
-            type: Rule_Descritption
+            type: Rule_Description
           target:
             description: |
               Internal information. Every item consists of the name of the metric under consideration and name of the observed asset – separated by "@".
@@ -839,7 +839,7 @@ types:
           rule_hierarchy:
             type: Rule_Hierarchy
           rule_desc:
-            type: Rule_Descritption
+            type: Rule_Description
           target:
             description: |
               Internal information. Regular expression which consists of the name of the metric under consideration and "@".
@@ -1243,7 +1243,7 @@ types:
               id: "37"
       400:
         description: |
-          Bed request.
+          Bad request.
         body:
           application/json:
             type: Error
@@ -1687,7 +1687,7 @@ types:
                 id: "37"
         400:
           description: |
-            Bed request.
+            Bad request.
           body:
             application/json:
               type: Error
@@ -1764,7 +1764,7 @@ types:
               type: Empty_Object
         400:
           description: |
-            Bed request.
+            Bad request.
           body:
             application/json:
               type: Error
@@ -1904,7 +1904,7 @@ types:
             # TODO
       400:
         description: |
-          Bed request.
+          Bad request.
         body:
           application/json:
             type: Error
@@ -2243,7 +2243,7 @@ types:
             # TODO
       400:
         description: |
-          Bed request.
+          Bad request.
         body:
           application/json:
             type: Error
@@ -2283,7 +2283,7 @@ types:
   # Example TODO
       400:
         description: |
-          Bed request.
+          Bad request.
         body:
           application/json:
             type: Error
@@ -2330,7 +2330,7 @@ types:
 # Example TODO
       400:
         description: |
-          Bed request.
+          Bad request.
         body:
           application/json:
             type: Error
@@ -2364,7 +2364,7 @@ types:
     # Example TODO
         400:
           description: |
-            Bed request.
+            Bad request.
           body:
             application/json:
               type: Error
@@ -2423,7 +2423,7 @@ types:
       # Example TODO
         400:
           description: |
-            Bed request.
+            Bad request.
           body:
             application/json:
               type: Error
@@ -2483,7 +2483,7 @@ types:
             type: object #TODO
       400:
         description: |
-          Bed request.
+          Bad request.
         body:
           application/json:
             type: Error
@@ -2624,7 +2624,7 @@ types:
         profile:
           - dashboard
           - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
   # sub
   /systemctl/status/{service_name}:
     uriParameters:
@@ -2640,7 +2640,7 @@ types:
           - dashboard
           - administrator
 
-# Responces and Errors TODO
+# Responses and Errors TODO
   # sub
   /systemctl/start:
     post:
@@ -2655,7 +2655,7 @@ types:
           example:
             # image version: Fri, 02 Sep 2016 15:03:52
             service_name: 42ity-asset
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /systemctl/stop:
@@ -2671,7 +2671,7 @@ types:
           example:
             # image version: Fri, 02 Sep 2016 15:03:52
             service_name: 42ity-asset
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /systemctl/restart:
@@ -2687,7 +2687,7 @@ types:
           example:
             # image version: Fri, 02 Sep 2016 15:03:52
             service_name: 42ity-asset
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /systemctl/enable:
@@ -2703,7 +2703,7 @@ types:
           example:
             # image version: Fri, 02 Sep 2016 15:03:52
             service_name: 42ity-asset
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /systemctl/disable:
@@ -2719,7 +2719,7 @@ types:
           example:
             # image version: Fri, 02 Sep 2016 15:03:52
             service_name: 42ity-asset
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /netcfgs:
@@ -2729,7 +2729,7 @@ types:
       (Authorization):
         profile:
           - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /netcfg/{iface_name}:
@@ -2744,7 +2744,7 @@ types:
       (Authorization):
         profile:
           - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
     put:
       description: |
         Updates settings of the specified interface.
@@ -2763,7 +2763,7 @@ types:
               gateway: 192.168.1.1
               nameservers:
                 - 192.168.127.1
-# Responces and Errors TODO
+# Responses and Errors TODO
   # sub
   /ifaces:
     get:
@@ -2773,7 +2773,7 @@ types:
         profile:
           - dashboard
           - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
   # sub
   /iface/{iface_name}:
     uriParameters:
@@ -2788,7 +2788,7 @@ types:
         profile:
           - dashboard
           - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /license:
@@ -2798,7 +2798,7 @@ types:
       (Authorization):
         profile:
           - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
 
     get:
       description: |
@@ -2808,7 +2808,7 @@ types:
           - anonymous
           - dashboard
           - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
 
       # subsub
     /status:
@@ -2820,7 +2820,7 @@ types:
             - anonymous
             - dashboard
             - administrator
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /passwd:
@@ -2834,7 +2834,7 @@ types:
       body:
         application/json:
           type: User
-# Responces and Errors TODO
+# Responses and Errors TODO
 
   # sub
   /sysinfo:
@@ -2853,7 +2853,7 @@ types:
         example:
         # image version: Tue, 09 Aug 2016 09:13:14
           detail: yes
-# Responces and Errors TODO
+# Responses and Errors TODO
 
 ######## Email test ###################
 /api/v1/admin/email_test:
@@ -2880,7 +2880,7 @@ types:
           username: admin
           password: pwd?1234
           grant_type: password
-# Responces and Errors TODO
+# Responses and Errors TODO
 
 /api/v1/oauth2/revoke:
   post:
@@ -2899,4 +2899,4 @@ types:
             type: Access_Token
         example:
           token: jgWCdeM8Ik9GbSBCVLTk9K-oRqzR-7qt7SwZSekzORx_-uqLIKsUvIKL5w==
-# Responces and Errors TODO
+# Responses and Errors TODO
