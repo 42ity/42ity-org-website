@@ -32,6 +32,9 @@ $ npm i -g raml2html
 For more information, check the
 link:https://github.com/raml2html/raml2html[Github project page]
 
+An excellent source for up-to-date Node.js packages for Linux systems is
+link:https://github.com/nodesource/distributions[NodeSource]
+
 - Get the content of the present repository
 
 ----------------------------------------------------------------------------

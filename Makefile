@@ -74,7 +74,7 @@ ADOC_PARAMS_COMMON =	\
 	--attribute iconsdir=images/icons/ \
 	-f bootstrap.conf
 
-all: $(HTML_FILES) $(IMAGE_FILES) $(STYLESHEET_FILES) $(SCRIPT_FILES)
+all: $(HTML_FILES) $(REST_DOC_HTML) $(IMAGE_FILES) $(STYLESHEET_FILES) $(SCRIPT_FILES)
 
 %.html : %.asciidoc $(COMMON_REQS)
 	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ $<
