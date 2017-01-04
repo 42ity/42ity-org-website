@@ -136,7 +136,8 @@ current version of 42ITy(TM).
 
 ==== How to create a new agent
 
-FIXME: reference to external doc or include
+The document describing how to create a new 42ITy(TM) agent is not yet
+available.
 
 === REST API communication interface
 
