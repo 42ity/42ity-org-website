@@ -291,6 +291,11 @@ Indicator) for data center power uptime, taking into account how long one of the
 main power sources was offline.
 * Repository: https://github.com/42ity/fty-kpi-power-uptime
 
+==== fty-rest
+
+* Description: fty-rest is the component extending Tntnet and implementing
+42ITy(TM) REST API.
+* Repository: https://github.com/42ity/fty-rest
 
 
 === Services dependencies
