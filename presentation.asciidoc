@@ -261,8 +261,8 @@ sensors to gather temperature and humidity data.
 
 ==== fty-metric-tpower
 
-* Description: fty-metric-tpower is the agent computing total datacenter and
-rack power metrics from measurements.
+* Description: fty-metric-tpower is the agent computing total datacenters,
+rooms, rows and racks power metrics from measurements.
 * Repository: https://github.com/42ity/fty-metric-tpower
 
 ==== fty-alert-engine
