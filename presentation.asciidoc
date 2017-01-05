@@ -301,16 +301,12 @@ main power sources was offline.
 
 === Services dependencies
 
-The systemd system and service manager is responsible for controlling how 42ITy(TM)
-services are started, stopped and otherwise managed. It uses an event-based and
-dependencies based approach to optimize how services are managed (started,
-stopped, reloaded).
+The systemd system and service manager is responsible for controlling how
+42ITy(TM) services are started, stopped and otherwise managed. It uses an
+event-based and dependencies based approach to optimize how services are managed
+(started, stopped, reloaded).
 
 The figure bellow illustrates the dependencies relationships for services
 running on 42ITy(TM).
 
-image:images/42ITy-svc-deps.png[42ITy services dependencies]
-
-...
-
-
+image:images/42ITy-systemd-deps.png[42ITy services dependencies]
