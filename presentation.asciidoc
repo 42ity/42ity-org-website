@@ -136,7 +136,8 @@ current version of 42ITy(TM).
 
 ==== How to create a new agent
 
-FIXME: reference to external doc or include
+The document describing how to create a new 42ITy(TM) agent is not yet
+available.
 
 === REST API communication interface
 
@@ -261,8 +262,8 @@ sensors to gather temperature and humidity data.
 
 ==== fty-metric-tpower
 
-* Description: fty-metric-tpower is the agent computing total datacenter and
-rack power metrics from measurements.
+* Description: fty-metric-tpower is the agent computing total datacenters,
+rooms, rows and racks power metrics from measurements.
 * Repository: https://github.com/42ity/fty-metric-tpower
 
 ==== fty-alert-engine
@@ -291,20 +292,21 @@ Indicator) for data center power uptime, taking into account how long one of the
 main power sources was offline.
 * Repository: https://github.com/42ity/fty-kpi-power-uptime
 
+==== fty-rest
+
+* Description: fty-rest is the component extending Tntnet and implementing
+42ITy(TM) REST API.
+* Repository: https://github.com/42ity/fty-rest
 
 
 === Services dependencies
 
-The systemd system and service manager is responsible for controlling how 42ITy(TM)
-services are started, stopped and otherwise managed. It uses an event-based and
-dependencies based approach to optimize how services are managed (started,
-stopped, reloaded).
+The systemd system and service manager is responsible for controlling how
+42ITy(TM) services are started, stopped and otherwise managed. It uses an
+event-based and dependencies based approach to optimize how services are managed
+(started, stopped, reloaded).
 
 The figure bellow illustrates the dependencies relationships for services
 running on 42ITy(TM).
 
-image:images/42ITy-svc-deps.png[42ITy services dependencies]
-
-...
-
-
+image:images/42ITy-systemd-deps.png[42ITy services dependencies]

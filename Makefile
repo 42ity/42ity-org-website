@@ -23,6 +23,7 @@ HTML_FILES = $(HTML_GEN_FILES) \
 IMAGE_FILES =	\
 	favicon.ico	\
 	images/42ITy-SW-arch.png	\
+	images/42ITy-systemd-deps.png	\
 	images/Eaton-IPC.png	\
 	images/icons/important.png \
 	images/icons/note.png \
@@ -84,7 +85,7 @@ index.html: index.asciidoc $(COMMON_REQS) index-jumboinfo.html
 	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -a jumbotron -a jumboinfo -o $@ $<
 
 # These page have table of content, as a right panel
-presentation.html: presentation.asciidoc $(COMMON_REQS)
+presentation.html: presentation.asciidoc $(COMMON_REQS) $(IMAGE_FILES)
 	$(ASCIIDOC) $(ADOC_PARAMS_COMMON) -o $@ -a toc2 -a toc-placement=right -a toclevels=3 $<
 
 class.html: class.asciidoc $(COMMON_REQS)
