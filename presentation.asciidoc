@@ -180,7 +180,7 @@ processed metrics.
 link:http://networkupstools.org[NUT - Network UPS Tools] is a project which
 provides support for a wide range of power devices, such as UPS, PDU and ATS.
 
-42ITy(TM) uses to gather data from network power devices.
+42ITy(TM) uses NUT to gather data from network power devices.
 
 ==== Tntnet
 
