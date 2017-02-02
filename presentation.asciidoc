@@ -136,8 +136,10 @@ current version of 42ITy(TM).
 
 ==== How to create a new agent
 
-The document describing how to create a new 42ITy(TM) agent is not yet
-available.
+The link:https://github.com/42ity/fty-example[fty-example] repository is an
+example agent, provided with instructions and serving as a reference on how to
+create a new 42ITy(TM).
+
 
 === REST API communication interface
 
