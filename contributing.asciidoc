@@ -98,8 +98,8 @@ team using link:mailto:EatonIPCOpensource@Eaton.com[Eaton IPC Opensource]
 The Documentation section of the link:http://42ity.org[42ITy(TM) website] provides
 some complementary technical information, such as:
 
-* how to interact with 42ITy(TM) through the REST API
-* how to create new agents for 42ITy(TM)
+* link:presentation.html#rest_api_communication_interface[how to interact with 42ITy(TM) through the REST API]
+* link:presentation.html#how_to_create_a_new_agent[how to create new agents for 42ITy(TM)]
 
 == Thanks and credits
 
