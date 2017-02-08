@@ -19,5 +19,6 @@ heterogeneous environments via a common framework and APIs.
 
 == Recent Updates
 
+- February 8th, 2017: 42ITy(TM) source-code and updated website availability.
 - October 5th, 2016: Initial announcement of 42ITy(TM) availability.
 - October 5th, 2016: Initial announcement of link:http://www.eaton.eu/ipminfrastructure[Eaton Intelligent Power Management Infrastructure and Intelligent Power Controller] availability.

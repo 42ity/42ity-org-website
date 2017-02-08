@@ -30,7 +30,6 @@ Development team (in alphabetical order)
 - Arnaud Quette
 - Jana Rapava
 - Barbora Stepankova
-- Radomir Vrajik
 - Michal Vyskocil
 
 Retired developers (in alphabetical order)
@@ -38,3 +37,4 @@ Retired developers (in alphabetical order)
 
 - Alena Chernikava
 - Michal Hrusecky
+- Radomir Vrajik
