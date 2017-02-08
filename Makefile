@@ -48,7 +48,7 @@ SCRIPT_FILES =	\
 REST_DOC_SOURCE = doc/rest/42ity_rest_api.raml
 REST_DOC_HTML = doc/rest/42ity_rest_api.html
 #REST_DOC_PDF = doc/rest/42ity_rest_api.pdf
-REST_DOCS = $(REST_DOC_HTML)
+REST_DOCS = $(REST_DOC_HTML) $(REST_DOC_SOURCE)
 
 # Common files that triggers a rebuild of the pages
 COMMON_REQS = bootstrap.conf navinfo.html
@@ -104,10 +104,12 @@ install:
 	git submodule update
 	@echo "Copying websites files..."
 	cp -f $(HTML_FILES) $(OUTDIR)/
+	mkdir -p $(OUTDIR)/images/icons
 	$(foreach image,$(IMAGE_FILES),cp -f $(image) $(OUTDIR)/$(image);)
 	$(foreach css,$(STYLESHEET_FILES),cp -f $(css) $(OUTDIR)/$(css);)
 	$(foreach js,$(SCRIPT_FILES),cp -f $(js) $(OUTDIR)/$(js);)
-	$(foreach file,$(REST_DOCS),cp -f $(file) $(OUTDIR)/$(REST_DOCS);)
+	mkdir -p $(OUTDIR)/doc/rest
+	$(foreach file,$(REST_DOCS),cp -f $(file) $(OUTDIR)/$(file);)
 
 clean:
 	rm -f $(HTML_GEN_FILES)
