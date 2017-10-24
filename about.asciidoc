@@ -20,6 +20,7 @@ contribute.
 Regular development team (in alphabetical order)
 ------------------------------------------------
 
+- Lucas Bchini
 - Guillaume Brialon
 - Yves Clauzel
 - Gerald Guillaume
@@ -28,6 +29,7 @@ Regular development team (in alphabetical order)
 - Evgeny Klimov
 - Jiři Kukačka
 - Michal Marek
+- Jean Perriault
 - Arnaud Quette
 - Jana Rapava
 - Barbora Štepankova
