@@ -21,6 +21,7 @@ heterogeneous environments via a common framework and APIs.
 
 == Recent Updates
 
+- July 31st, 2017: Updated firmware and software for the Intelligent Power Controller appliance, built from 42ITy(TM) source-code,  was released and made downloadable at link:http://www.eaton.eu/ipminfrastructure[Eaton IPM Infra version 1.2.0].
 - February 8th, 2017: 42ITy(TM) source-code and updated website availability.
 - October 5th, 2016: Initial announcement of 42ITy(TM) availability.
 - October 5th, 2016: Initial announcement of link:http://www.eaton.eu/ipminfrastructure[Eaton Intelligent Power Management Infrastructure and Intelligent Power Controller] availability.
