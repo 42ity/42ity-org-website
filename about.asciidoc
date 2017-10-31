@@ -17,24 +17,36 @@ be a key contributor to 42ITy(TM), the community is already growing. Please
 read the link:contributing.html[Contributor guide] to find out how you can
 contribute.
 
-Development team (in alphabetical order)
-----------------------------------------
+Regular development team (in alphabetical order)
+------------------------------------------------
 
+- Lucas Bchini
+- Guillaume Brialon
 - Yves Clauzel
 - Gerald Guillaume
-- Tomas Halman
-- Karol Hrdina
+- Vojtech Hejl
 - Ekaterina Klimova
 - Evgeny Klimov
-- Hélder Loureiro
+- Jiři Kukačka
+- Michal Marek
+- Jean Perriault
 - Arnaud Quette
 - Jana Rapava
-- Barbora Stepankova
-- Michal Vyskocil
+- Barbora Štepankova
 
-Retired developers (in alphabetical order)
-------------------------------------------
+Retired regular developers (in alphabetical order)
+--------------------------------------------------
 
+- Julio Bruno
 - Alena Chernikava
-- Michal Hrusecky
+- Tomas Halman
+- Karol Hrdina
+- Michal Hrušecky
+- Hélder Loureiro
 - Radomir Vrajik
+- Michal Vyskočil
+
+And extra thanks to members of other teams in Eaton Corporation and outside,
+as well as to numerous non-developers involved in the project and the open
+source ecosystems it builds upon, who have all contributed greatly to its
+evolution (and keep doing it).
