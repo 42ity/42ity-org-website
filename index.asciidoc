@@ -2,8 +2,10 @@
 
 == Our mission
 
-The 42ITY(TM) project exists to provide the most open, flexible platform in the
-industry for enabling data center service optimization.
+The 42ITy(TM) project exists to provide the most open, flexible platform in the
+industry for enabling data center service optimization, where active equipment
+from multiple datacenter infrastructure solution vendors can be managed on a
+common dashboard.
 
 Proprietary, monolithic solutions for data center infrastructure management have
 often failed to provide the expected customer value because they are too costly
