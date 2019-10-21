@@ -27,7 +27,10 @@ IMAGE_FILES =	\
 	images/Eaton-IPC.png	\
 	images/icons/important.png \
 	images/icons/note.png \
-	images/icons/warning.png
+	images/icons/warning.png \
+	images/42ITy-TM-logo-favicon.ico \
+	images/42ITy-TM-logo-rectangle.png \
+	images/42ITy-TM-logo-square.png
 
 STYLESHEET_FILES =	\
 	css/42ity.css	\
