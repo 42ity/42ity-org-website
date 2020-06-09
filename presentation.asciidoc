@@ -24,7 +24,8 @@ The 42ITy(TM) platform allows to connect together various software components to
 * provide interaction to users, through a web user interface,
 * provide interaction to developers and 3rd party software, through a REST API.
 
-A typical integration, which serves as a reference implementation, is  
+Typical integrations, which serves as reference implementations, are Eaton
+Intelligent Power Manager 2 and
 link:http://www.eaton.eu/ipminfrastructure[Eaton Intelligent Power Controller]:
 
 image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
@@ -37,13 +38,13 @@ image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
 * Composite & Datacenter or IT room level metrics
 * Open (REST API) communication interface
 * Micro-services & plug-in architecture
+* Simplified asset management
 
 
 === Future availability
 
 * Builds (images & packages) provided for both ARM and x86 platforms
 * Easy & Intuitive standards based UI (AngularJS, Bootstrap)
-* Simplified asset management
 
 
 === Future features and capabilities
@@ -62,9 +63,12 @@ image:images/Eaton-IPC.png[Eaton Intelligent Power Controller]
 
 == Technical overview
 
+=== Architecture
+
 The 42ITy(TM) software platform is a Service Oriented Architecture (SOA), made of a
-collection of software packages communicating through a MOM (Message-oriented
-middleware), built around the link:http://zeromq.org[ZeroMQ] technology stack.
+collection of software packages. These package provide agents (micro services) which
+communicate through a MOM (Message-oriented middleware), built around the
+link:http://zeromq.org[ZeroMQ] technology stack.
 
 The software is divided in a set of independent components, called *agent*.
 
@@ -96,7 +100,7 @@ service is a dedicated agent, which can run in more instances spawned by broker
 on demand. This is suitable for long running tasks. This is not used in
 42ITy(TM) currently.
 
-=== MQ protocol overview
+=== MQ protocol overview 
 
 42ITy(TM) protocol consists of several layers:
 
@@ -107,6 +111,13 @@ layers (unix sockets, tcp sockets, ...).
 subscribers with published messages and services.
 * Application layer - fty-proto: this provides a minimal set of messages to
 encode and decode the main types of data flowing in the system.
+
+Refer to the project 
+link:https://en.wikipedia.org/wiki/Actor_model[fty-proto] for more information.
+
+=== Dataflow overview
+
+This chapter will be completed later.
 
 === Agent overview
 
@@ -136,9 +147,17 @@ current version of 42ITy(TM).
 
 ==== How to create a new agent
 
-The link:https://github.com/42ity/fty-example[fty-example] repository is an
-example agent, provided with instructions and serving as a reference on how to
-create a new 42ITy(TM).
+There are various ways to create a new 42ITy agent:
+
+* create from scratch:
+This is the hardest way, creating a zproject project.xml file. There are 
+link:https://github.com/zeromq/zproject/blob/master/README.md[guides and tutorials]
+which explains this, and are otherwise needed to further complete your agent.
+
+* fork one of the github example project, which provides instructions and
+serves as a reference on how to create a new 42ITy(TM):
+** link:https://github.com/42ity/fty-example[fty-example]
+** link:https://github.com/42ity/fty-template[fty-template]
 
 
 === REST API communication interface
@@ -150,6 +169,16 @@ Complete documentation using RAML is available:
 * link:doc/rest/42ity_rest_api.raml[RAML source format]
 * link:doc/rest/42ity_rest_api.html[RAML HTML format]
 
+==== How to create a new REST API mountpoint
+
+42ITy uses Tntnet webserver, which provides simple mechanisms to create new REST
+servlets.
+
+There are link:http://www.tntnet.org/tntnet.html[tutorials], but you may also
+look at fty-rest and other fty-rest-* components as references.
+
+You may fork the link:https://github.com/42ity/fty-template-rest[fty-template-rest]
+repository.
 
 == 42ITy(TM) software stack
 
@@ -199,38 +228,134 @@ platform. More detailed information can be found on the dedicated pages of these
 sub-projects.
 
 Each of these sub-projects is available as a repository on
-link:http://github.com/42ity[42ITy] GitHub page.
+link:http://github.com/42ity[42ITy] GitHub page, and provides a README file,
+with various information on its purpose, its provided services (through STREAMS)
+and data.
 
-==== fty-core
+==== General projects
+
+===== fty-core
 
 * Description: fty-core implements the core and central functionalities for
-42ITy.
+42ITy, by providing DB setup, OS integration and image creation scripts, ... 
 * Repository: https://github.com/42ity/fty-core
 
-==== fty-proto
+===== fty-proto
 
 * Description: fty-proto is the shared implementation of 42ITy(TM) core
 protocols, using Malamute and used by the different agents (assets, metrics,
 alerts).
 * Repository: https://github.com/42ity/fty-proto
 
-==== fty-asset
+===== fty-shm
+
+* Description: fty-shm is lockless metric sharing library for 42ity.
+* Repository: https://github.com/42ity/fty-shm
+
+
+==== Common libraries
+
+===== fty-common
+
+* Description: fty-common provides core shared code for all fty projects.
+* Repository: https://github.com/42ity/fty-common
+
+===== fty-common-db
+
+* Description: fty-common-db provides a common library with database-related
+functions.
+* Repository: https://github.com/42ity/fty-common-db
+
+===== fty-common-dto
+
+* Description: fty-common-dto provides a common library with common objects
+manipulation and inter-agents communication.
+* Repository: https://github.com/42ity/fty-common-dto
+
+===== fty-common-logging
+
+* Description: fty-common-logging provides a common library for shared logging.
+* Repository: https://github.com/42ity/fty-common-logging
+
+===== fty-common-messagebus
+
+* Description: fty-common-messagebus provides a common library with methods
+for Request/Reply and Publish/Subscribe patterns on malamute.
+* Repository: https://github.com/42ity/fty-common-messagebus
+
+===== fty-common-mlm
+
+* Description: fty-common-mlm provides a common library with mlm/zmq-related
+functions.
+* Repository: https://github.com/42ity/fty-common-mlm
+
+===== fty-common-nut
+
+* Description: fty-common-nut provides a common library to interact with
+NUT - Network UPS Tools, and interpret its provided data (including mapping
+between NUT and 42ITy variables).
+* Repository: https://github.com/42ity/fty-common-nut
+
+===== fty-common-socket
+
+* Description: fty-common-socket provides common classes and function to
+handle inter process communication using unix socket.
+* Repository: https://github.com/42ity/fty-common-socket
+
+===== fty-common-translation
+
+* Description: fty-common-translation provides a common library with
+translation-related functions.
+* Repository: https://github.com/42ity/fty-common-translation
+
+===== fty-common-rest
+
+* Description: fty-common-rest provides a common library with
+REST API related functions.
+* Repository: https://github.com/42ity/fty-common-rest
+
+
+==== Miscellaneous
+
+===== fty-asset
 
 * Description: fty-asset is the agent in charge of managing information about
 assets.
 * Repository: https://github.com/42ity/fty-asset
 
-==== fty-metric-compute
+===== fty-asset-activator
 
-* Description: fty-metric-compute provides computation services on metrics.
-* Repository: https://github.com/42ity/fty-metric-compute
+* Description: fty-asset-activator is a library with accessor functions for
+activation/deactivation of assets.
+* Repository: https://github.com/42ity/fty-asset-activator
 
-==== fty-metric-store
+===== fty-info
 
-* Description: fty-metric-store provides the persistance layer for metrics.
-* Repository: https://github.com/42ity/fty-metric-store
+* Description: fty-info returns rack controller information.
+* Repository: https://github.com/42ity/fty-info
 
-==== fty-nut
+===== fty-mdns-sd
+
+* Description: fty-mdns-sd manages network announcement (mDNS) and discovery
+(DNS-SD).
+* Repository: https://github.com/42ity/fty-mdns-sd
+
+===== fty-srr
+
+* Description: fty-srr is an agent who is in charge Saving, Restoring, and
+Reseting the system.
+* Repository: https://github.com/42ity/fty-srr
+
+
+==== Discovery, configuration and monitoring
+
+===== fty-discovery
+
+* Description: fty-discovery is an agent that polls discovers power devices
+over the network and publishes new device elements in the asset DB.
+* Repository: https://github.com/42ity/fty-discovery
+
+===== fty-nut
 
 * Description: fty-nut is an agent that polls power devices (UPS and PDU) using
 NUT drivers, through NUT server (upsd). It collects current measurements and
@@ -238,67 +363,127 @@ publishes them. It also collects static inventory data (assets) and publishes
 them.
 * Repository: https://github.com/42ity/fty-nut
 
-==== fty-outage
-
-* Description: fty-outage is the agent that generates and sends alerts when a
-device does not communicate.
-* Repository: https://github.com/42ity/fty-outage
-
-==== fty-metric-cache
-
-* Description: fty-metric-cache is the agent providing current values of any
-metric in the system.
-* Repository: https://github.com/42ity/fty-metric-cache
-
-==== fty-email
-
-* Description: fty-email is the agent in charge of generating and sending
-email notifications.
-* Repository: https://github.com/42ity/fty-email
-
-==== fty-sensor-env
+===== fty-sensor-env
 
 * Description: fty-sensor-env is the agent communicating with environmental
 sensors to gather temperature and humidity data.
 * Repository: https://github.com/42ity/fty-sensor-env
 
-==== fty-metric-tpower
+===== fty-sensor-gpio
+
+* Description: fty-sensor-gpio is the agent to manage GPIO sensors and devices.
+* Repository: https://github.com/42ity/fty-sensor-gpio
+
+
+==== Metrics Generation & Processing
+
+===== fty-metric-compute
+
+* Description: fty-metric-compute provides computation services on metrics.
+* Repository: https://github.com/42ity/fty-metric-compute
+
+===== fty-metric-ambient-location
+
+* Description: fty-metric-ambient-location is the agent computing the average
+humidity and temperature of each locations, based on sensor metrics.
+* Repository: https://github.com/42ity/fty-metric-ambient-location
+
+===== fty-metric-tpower
 
 * Description: fty-metric-tpower is the agent computing total datacenters,
 rooms, rows and racks power metrics from measurements.
 * Repository: https://github.com/42ity/fty-metric-tpower
 
-==== fty-alert-engine
-
-* Description: fty-alert-engine is the agent that evaluates rules written
-in Lua and produces alerts accordingly.
-* Repository: https://github.com/42ity/fty-alert-engine
-
-==== fty-alert-list
-
-* Description: fty-alert-list is the agent that provides information about
-active and resolved alerts.
-* Repository: https://github.com/42ity/fty-alert-list
-
-==== fty-metric-composite
+===== fty-metric-composite
 
 * Description: fty-metric-composite is an agent that generates composite
 metrics, that is to say metrics which are computed from several other metrics.
 Rules are defined as scripts written in Lua.
 * Repository: https://github.com/42ity/fty-metric-composite
 
-==== fty-kpi-power-uptime
+===== fty-kpi-power-uptime
 
 * Description: fty-kpi-power-uptime computes and publishes KPI (Key Performance
 Indicator) for data center power uptime, taking into account how long one of the
 main power sources was offline.
 * Repository: https://github.com/42ity/fty-kpi-power-uptime
 
-==== fty-rest
+===== fty-warranty
 
-* Description: fty-rest is the component extending Tntnet and implementing
-42ITy(TM) REST API.
+* Description: fty-warranty is the agent that generates and sends alerts when a
+device does not communicate.
+* Repository: https://github.com/42ity/fty-warranty
+
+
+==== Real time and history data
+
+===== fty-metric-cache
+
+* Description: fty-metric-cache is the agent providing current values of any
+metric in the system.
+* Repository: https://github.com/42ity/fty-metric-cache
+
+===== fty-metric-store
+
+* Description: fty-metric-store provides the persistance layer for metrics.
+* Repository: https://github.com/42ity/fty-metric-store
+
+
+==== Alerts and notifications
+
+===== fty-alert-engine
+
+* Description: fty-alert-engine is the agent that evaluates threshold based rules
+written in Lua and produces alerts accordingly.
+* Repository: https://github.com/42ity/fty-alert-engine
+
+===== fty-alert-flexible
+
+* Description: fty-alert-flexible is the agent that evaluates non threshold based
+rules (status, advanced metrics, ...) written in Lua and produces alerts accordingly.
+* Repository: https://github.com/42ity/fty-alert-flexible
+
+===== fty-alert-list
+
+* Description: fty-alert-list is the agent that provides information about
+active and resolved alerts.
+* Repository: https://github.com/42ity/fty-alert-list
+
+===== fty-alert-stats
+
+* Description: fty-alert-stats computes metric statistics on alerts.
+* Repository: https://github.com/42ity/fty-alert-stats
+
+===== fty-email
+
+* Description: fty-email is the agent in charge of generating and sending
+email notifications.
+* Repository: https://github.com/42ity/fty-email
+
+===== fty-outage
+
+* Description: fty-outage is the agent that generates and sends alerts when a
+device does not communicate.
+* Repository: https://github.com/42ity/fty-outage
+
+
+==== REST API
+
+===== fty-rest
+
+* Description: fty-rest is the main component extending Tntnet and
+implementing 42ITy(TM) REST API.
 * Repository: https://github.com/42ity/fty-rest
+
+===== Other REST servlets
+
+The following servlets provide specific mountpoints and services:
+
+* fty-scripts-rest: https://github.com/42ity/fty-scripts-rest
+* fty-asset-mapping-rest: https://github.com/42ity/fty-asset-mapping-rest
+* fty-certificate-generator-rest: https://github.com/42ity/fty-certificate-generator-rest
+* fty-security-wallet-rest: https://github.com/42ity/fty-security-wallet-rest
+* fty-srr-rest: https://github.com/42ity/fty-srr-rest
 
 
 === Services dependencies
@@ -312,3 +497,50 @@ The figure bellow illustrates the dependencies relationships for services
 running on 42ITy(TM).
 
 image:images/42ITy-systemd-deps.png[42ITy services dependencies]
+
+NOTE: this needs refreshing and completion!
+
+=== Packaging
+
+Each project provides the necessary files to create binary packages for the
+main Linux distributions (Debian / Ubuntu, Redhat, Suse, ...).
+
+For example, here are link:https://github.com/42ity/fty-example/tree/master/packaging/debian[fty-example packaging files for Debian]
+
+Note that 42ITy main focus being on Debian, the other packages integration may
+not be as optimal.
+
+It's beyond the scope of this document to describe how to create such packages.
+You may refer to the following documents:
+
+* link:https://www.debian.org/doc/manuals/maint-guide/build.html[for Debian]
+* link:https://rpm-packaging-guide.github.io/[for Redhat / Suse] 
+
+As a basic example for fty-example on Debian, you may simply do:
+
+    $ cd fty-example
+    $ ln -s packaging/debian/
+    $ dpkg-buildpackage -us -uc
+
+=== Creating a system image
+
+To create a full system using 42ITy, you will need the following:
+
+* an operating system, including a kernel and bootloader.
+42ITy is currently based on Debian GNU/Linux (version 8 or 10),
+* the set of 42ITy projects (agents and libraries), built into binary packages,
+* optionally, your own agents and software.
+
+Basically, you just need to:
+
+* Retrieve or build the following list of packages:
+** link:https://github.com/42ity/fty-core/blob/master/images/runtime-pkg.list[packages for deployment system]
+** link:https://github.com/42ity/fty-core/blob/master/images/devel-pkg.list[packages for development system]
+* assemble these into an OS image, either custom built or pristine one
+* ensure that the 42ITy system is well setup, from an operating point of view. The 
+link:https://github.com/42ity/fty-core/blob/master/obs/preinstallimage-bios.sh.in[following script]
+can be used.
+
+Tools like link:https://wiki.debian.org/Multistrap[Multistrap] or
+link:https://openbuildservice.org/[OBS] may help you to arrange and automate
+images production using the above information.
