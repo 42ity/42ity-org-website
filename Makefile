@@ -28,6 +28,7 @@ IMAGE_FILES =	\
 	images/icons/important.png \
 	images/icons/note.png \
 	images/icons/warning.png \
+	images/icons/favicon.ico \
 	images/42ITy-TM-logo-favicon.ico \
 	images/42ITy-TM-logo-rectangle.png \
 	images/42ITy-TM-logo-square.png
