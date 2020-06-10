@@ -351,7 +351,7 @@ Reseting the system.
 
 ===== fty-discovery
 
-* Description: fty-discovery is an agent that polls discovers power devices
+* Description: fty-discovery is an agent that discovers power devices
 over the network and publishes new device elements in the asset DB.
 * Repository: https://github.com/42ity/fty-discovery
 
@@ -465,6 +465,26 @@ email notifications.
 * Description: fty-outage is the agent that generates and sends alerts when a
 device does not communicate.
 * Repository: https://github.com/42ity/fty-outage
+
+==== Security
+
+===== fty-security-wallet
+
+* Description: fty-security-wallet is the agent providing a central and secure
+storage for credential documents.
+* Repository: https://github.com/42ity/fty-security-wallet
+
+===== fty-certificate-generator
+
+* Description: fty-certificate-generator is the agent which generates security
+certificates.
+* Repository: https://github.com/42ity/fty-certificate-generator
+
+===== fty-lib-certificate
+
+* Description: fty-lib-certificate is a library providing helper class
+for SSL certificate handling.
+* Repository: https://github.com/42ity/fty-lib-certificate
 
 
 ==== REST API
