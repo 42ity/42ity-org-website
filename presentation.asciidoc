@@ -11,7 +11,7 @@ by providing a set of shared resources to grow the adoption of 42ITy(TM) as
 the only open source, next generation Data Center Service Optimization
 enablement platform.
 
-The initial 42ITy(TM) platform is a result of more than 3 years of R&D effort
+The initial 42ITy(TM) platform is a result of more than 5 years of R&D effort
 by Eaton Corporation provided to the community.  While Eaton continues to
 be a key contributor to 42ITy(TM), the community is already growing.  Please
 read the link:contributing.html[Contributor guide] to find out how you can
